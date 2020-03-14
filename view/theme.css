@@ -1,0 +1,21 @@
+h1{
+    color: #F65836;
+}
+#welbut{
+    background-color: #5154EE;
+    font-size: xx-large;
+}
+body{
+    margin-top: 10%;
+    background-color: #3B3B3B;
+}
+h3{
+    margin-top: 20%;
+    text-align: center;
+    color: white;
+}
+a{
+    margin-top: 20%;
+    margin-left: 20%;
+    color: thistle;
+}
