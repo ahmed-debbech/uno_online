@@ -1,0 +1,11 @@
+body{
+    margin-top: 10%;
+    background-color: #3B3B3B;
+}
+h1{
+    color: #F65836;
+}
+#start-button{
+    background-color: yellow;
+    font-size: xx-large;
+}
