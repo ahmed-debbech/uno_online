@@ -5,16 +5,19 @@
     <body>
         <center>
             <h1>Welcome To UNO Online :) enjoy! </h1>
-            <table>
-                <tr>
-                    <td>
-                        <input onclick="location.href = 'join-room.html';" type="button" value="Join Room" name="join-button" id="welbut">
-                    </td>
-                    <td>
-                        <input  onclick="location.href = 'create-room.html';" type="button" value ="Create Room" name="create-button" id="welbut">
-                    </td>
-                </tr>
-            </table>
+            <form action="../core/redirection.php" method="get">
+                <table>
+                    <tr>
+                        <td><input type="hidden" name="action"></td>
+                        <td>
+                            <input onclick="document.getElementsByName('action')[0].value = 'join'; " type="submit" value="Join Room" name="join-button" id="welbut">
+                        </td>
+                        <td>
+                            <input  onclick="document.getElementsByName('action')[0].value = 'create';" type="submit" value ="Create Room" name="create-button" id="welbut">
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </center>
         <footer>
             <h3>An Ahmed Debbech Production (c) 2020.</h3>
