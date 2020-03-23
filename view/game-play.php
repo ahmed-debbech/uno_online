@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="game-play-theme.css">
@@ -24,21 +25,18 @@
                         <input type="button" value="Stack">
                     </td>
                     <td><table border="2px">
-                        <tr>
-                            <td id="card">card</td>
-                            <td id="card">card</td>
-                            <td id="card">card</td>
-                            <td id="card">card</td>
-                            <td id="card">card</td>
-                            <td id="card">card</td>
-                            <td id="card">card</td>
+                        <tr> <td>
+                        <?php
+                            foreach($_SESSION as $elem){
+                                echo $elem->getName();
+                            }
+                        ?> </td>
                         </tr>
                     </table></td>
                     <td>
                         You
                     </td>
                 </tr>
-
             </table>
         </center>
     </body>
