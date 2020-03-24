@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php session_start();
+        include("../entities/player.php");
+?>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="game-play-theme.css">
@@ -25,12 +27,9 @@
                         <input type="button" value="Stack">
                     </td>
                     <td><table border="2px">
-                        <tr> <td>
-                        <?php
-                            foreach($_SESSION as $elem){
-                                echo $elem->getName();
-                            }
-                        ?> </td>
+                        <tr> 
+                            <td>
+                            </td>
                         </tr>
                     </table></td>
                     <td>

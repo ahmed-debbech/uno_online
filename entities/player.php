@@ -2,7 +2,7 @@
 class Player {
     private $id;
     private $name;
-    function __construct($name,$id){
+    public function __construct($name,$id){
      $this->id = $id;
      $this->name = $name;
     }
