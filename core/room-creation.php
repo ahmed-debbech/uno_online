@@ -1,11 +1,11 @@
 <?php
     session_start();
     include("../entities/room.php");
-    include("../entities/player.php");
+    include_once("../entities/player.php");
     $playerId = rand(1000,9999);
     $playerId .= "p";
-    $player = new Player($_GET["player-name"],$playerId);
-    $_SESSION[$playerId] = serialize($player); 
+    $initialPlayer = new Player($_GET["player-name"],$playerId);
+    $_SESSION[$playerId] = serialize($initialPlayer); 
     $room = new Room($_GET["room-code"], $initialPlayer);
-    array_push($_GLOBALS, $room);
+    $_GLOBALS[$_GET["room-code"]] = $room;
 ?>
