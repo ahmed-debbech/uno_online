@@ -1,13 +1,14 @@
 function checkCreate(){
     if(checkName() == true){
-        location.href = "game-play.html";
+        return true;
     }
+    return false;
 }
 
 function checkJoin(){
     if(checkRoomCode() == true&&
     checkName() == true){
-        location.href = "game-play.html";
+        location.href = "../core/game-play.php";
     }
 }
 function checkRoomCode(){
@@ -16,12 +17,12 @@ function checkRoomCode(){
         alert("You must insert a room code");
         return false;
     }else{
-        if(r.match(/^[A-Z]+$/i) == true){
-            alert("Your code must be only numbers");
+        if(r.length < 5 || r.length > 5){
+            alert("Your code must consist of 4 numbers");
             return false;
         }else{
-            if(r.length < 4 || r.length > 4){
-                alert("Your code must consist of 4 numbers");
+            if(r[4]<="9" && r[4]>="0"){
+                alert("Room codes should finish with 'r' letter");
                 return false;
             }
         }

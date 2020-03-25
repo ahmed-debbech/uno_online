@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="create-room-theme.css">
@@ -17,13 +18,16 @@
                 <tr>
                     <td style="color: green;">32</td>
                     <td style="color: green;">Ahmed</td>
-                </tr>-
+                </tr>
             </table>
             <h2 style="color: white;">Waiting for other players to join... <br>
             Press Start to start game when you are satistifed with the number of players.</h2>
             Write Down your name first:
-            <input type="text" id="player-name" name="player-name"><br>
-            <input type="button" onclick="checkCreate();" id="start-button" value="Start" >
+            <form action="../core/room-creation.php" method="get" onsubmit="event.preventDefault(); checkCreate();">
+                <input type="hidden" name="room-code" value="<?php echo $_GET['code']?>">
+                <input type="text" id="player-name" name="player-name"><br>
+                <input type="submit" id="start-button" value="Start" >
+            </form>
         </center>
     </body>
 </html>
