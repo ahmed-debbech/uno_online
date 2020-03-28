@@ -11,4 +11,4 @@
     $room = new Room($roomCode, $initialPlayer);
     $_GLOBALS[$roomCode] = $room;
     header("Location: ../view/create-room.php?room-code=".$room->getRoomCode()."&player-id=".$initialPlayer->getId());
-?>
+?>  

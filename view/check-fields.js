@@ -18,7 +18,7 @@ function checkRoomCode(){
         return false;
     }else{
         if(r.length < 5 || r.length > 5){
-            alert("Your code must consist of 4 numbers");
+            alert("Your code must consist of 5 caracters");
             return false;
         }else{
             if(r[4]<="9" && r[4]>="0"){
