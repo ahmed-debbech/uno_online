@@ -8,12 +8,21 @@ session_start();
     </head>
     <body>
         <center>
-            <table id="players" border="3px">
+            <table id="players">
                 <tr>
-                    <td>Name1 - rest: 5</td>
-                    <td>Name2 - rest: 7</td>
-                    <td>Name3 - rest: 4</td>
-                </td>
+                    <td>
+                        <h4>Room Code: <?php echo $_GET["room-code"]?></h4>
+                    </td>
+                    <td>
+                        <table border="3px">
+                            <tr>
+                                <td>Not Available - rest: 0</td>
+                                <td>Not Available - rest: 0</td>
+                                <td>Not Available - rest: 0</td>
+                            </td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
             </table>
             <table id="floor" border="3px">
