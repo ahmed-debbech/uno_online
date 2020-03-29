@@ -25,5 +25,12 @@ class Room {
     public function decrementRemaining(){
         $this->numberOfPlayersRemaining--;
     }
+    public function createRoomFile(){
+        $fileName = $this->roomCode.".txt";
+        $file = fopen($fileName, "w");
+        $buff = serialize($this);
+        fwrite($file, $buff);
+        fclose($file);
+    }
 }
 ?>

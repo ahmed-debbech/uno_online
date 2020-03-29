@@ -27,7 +27,7 @@ session_start(); ?>
             <h2 style="color: white;">Waiting for other players to join... <br>
             Press Start to start game when you are satistifed with the number of players.</h2>
             Write Down your name first:
-            <form action="../core/room-creation.php" method="get" onsubmit="return checkCreate();">
+            <form action="../view/game-play.php" method="get" onsubmit="return checkCreate();">
                 <input type="hidden" name="room-code" value="<?php echo $_GET['code']?>">
                 <input type="text" id="player-name" name="player-name"><br>
                 <input type="submit" id="start-button" value="Start">

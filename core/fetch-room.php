@@ -5,16 +5,10 @@
     $playerId .= "p";
     $player = new Player($_GET["player-name"],$playerId);
     $_SESSION[$playerId] = serialize($player); 
-    $found = false;
-    foreach($_GLOBALS as $room){
-        if($room->getRoomCode() == $_GET["room-code"]){
-            $found = true;
-            $theroom = $room;
-        }
-    }
-    if($found == true){
+    $file = fopen($_GET["room-code"].".txt", "r");
+    if($file != FALSE){
         header("Location: ../view/game-play.php?player-id=".$playerId);
     }else{
-        echo "there's no such room";
+        echo "room not found 404";
     }
 ?>
