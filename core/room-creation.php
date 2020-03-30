@@ -6,7 +6,8 @@
     $playerId .= "p";
     $roomCode = rand(1000,9999);
     $roomCode .= "r";
-    $initialPlayer = new Player($_GET["player-name"],$playerId);
+    echo $roomCode;
+    $initialPlayer = new Player($_GET["player-name"],$playerId,$roomCode);
     $_SESSION[$playerId] = serialize($initialPlayer); 
     $room = new Room($roomCode, $initialPlayer);
     $room->addRoomToDB();
