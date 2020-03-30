@@ -9,6 +9,6 @@
     $initialPlayer = new Player($_GET["player-name"],$playerId);
     $_SESSION[$playerId] = serialize($initialPlayer); 
     $room = new Room($roomCode, $initialPlayer);
-    $room->createRoomFile();
+    $room->addRoomToDB();
     header("Location: ../view/create-room.php?room-code=".$room->getRoomCode()."&player-id=".$initialPlayer->getId());
 ?>  

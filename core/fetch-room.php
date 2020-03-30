@@ -5,7 +5,7 @@
     $playerId .= "p";
     $player = new Player($_GET["player-name"],$playerId);
     $_SESSION[$playerId] = serialize($player); 
-    $file = fopen($_GET["room-code"].".txt", "r");
+    $file = fopen("../avail-rooms/".$_GET["room-code"].".txt", "r");
     if($file != FALSE){
         header("Location: ../view/game-play.php?player-id=".$playerId);
     }else{

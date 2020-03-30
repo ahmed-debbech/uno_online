@@ -25,11 +25,16 @@ class Room {
     public function decrementRemaining(){
         $this->numberOfPlayersRemaining--;
     }
-    public function createRoomFile(){
-        $fileName = $this->roomCode.".txt";
+    public function addRoomToDB(){
+        $fileName = "../avail-rooms/".$this->roomCode.".txt";
+        shell_exec("chmod 0777 ".$fileName);
         $file = fopen($fileName, "w");
-        $buff = serialize($this);
-        fwrite($file, $buff);
+        if($file == FALSE){
+            //lets create the available-rooms dir
+            mkdir("../avail-rooms", 0777);
+            $file = fopen($fileName, "w");
+        }
+        fwrite($file, serialize($this));
         fclose($file);
     }
 }
