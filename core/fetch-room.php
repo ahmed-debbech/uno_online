@@ -8,7 +8,7 @@
     if($file != FALSE){
         $player->setAssignedRoom($_GET["roomnum"]);
         $_SESSION[$playerId] = serialize($player); 
-        header("Location: ../view/queue-page.php?player-id=".$playerId."&room-code=".$_GET["room-code"]);
+        header("Location: ../view/queue-page.php?player-id=".$playerId."&room-code=".$_GET["roomnum"]);
     }else{
         echo "room not found 404";
     }
