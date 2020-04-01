@@ -6,9 +6,10 @@ function checkCreate(){
 }
 
 function checkJoin(){
-    if(checkRoomCode() == true&&
-    checkName() == true){
-        location.href = "../core/game-play.php";
+    if((checkRoomCode() == true) && (checkName() == true)){
+        return true;
+    }else{
+    return false;
     }
 }
 function checkRoomCode(){
@@ -34,6 +35,7 @@ function checkName(){
     if(r == ""){
         alert("You must write your name!");
         return false;
-    }
+    }else{
     return true;
+    }
 }

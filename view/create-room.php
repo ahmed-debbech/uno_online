@@ -19,15 +19,8 @@ session_start(); ?>
                     <th>Player_ID</th>
                     <th>Name</th>
                 </tr>
-                <tr>
-                     <td style="color: green;"><?php echo $_GET["player-id"];?></td>
-                    <td style="color: green;"><?php 
-                    echo unserialize($_SESSION[$_GET["player-id"]])->getName();
-                    ?></td>
-                    </tr>
                     <?php
                         foreach($_SESSION as $row){
-                            echo unserialize($row)->getAssignedRoom();
                             if(strcmp(unserialize($row)->getAssignedRoom(), $_GET["room-code"]) == 0){
                                 echo "<tr>";
                                 echo "<td style='color: green;'>";
