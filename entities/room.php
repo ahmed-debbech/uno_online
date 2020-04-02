@@ -27,11 +27,11 @@ class Room {
     }
     public function addRoomToDB(){
         $fileName = "../avail-rooms/".$this->roomCode.".txt";
-        shell_exec("chmod 0777 ".$fileName);
+        shell_exec("chmod 777 ".$fileName);
         $file = fopen($fileName, "w");
         if($file == FALSE){
             //lets create the available-rooms dir
-            mkdir("../avail-rooms", 0777);
+            mkdir("../avail-rooms", 777);
             $file = fopen($fileName, "w");
         }
         fwrite($file, serialize($this));
