@@ -20,17 +20,23 @@ session_start();
                     <th>Player_ID</th>
                     <th>Name</th>
                 </tr>
+                <tr>
+                    <td style='color: green;' ><?php echo $_GET["player-id"];?></td>
+                    <td style='color: green;'>You</td>
+                </tr>
                     <?php
                         foreach($_SESSION as $row){
-                            if(strcmp(unserialize($row)->getAssignedRoom(), $_GET["room-code"]) == 0){
-                                echo "<tr>";
-                                echo "<td style='color: green;'>";
-                                echo unserialize($row)->getId();
-                                echo "</td>";
-                                echo "<td style='color: green;'>";
-                                echo unserialize($row)->getName();
-                                echo "</td>";
-                                echo "</tr>";
+                            if(unserialize($row)->getId() != $_GET["player-id"]){
+                                if(strcmp(unserialize($row)->getAssignedRoom(), $_GET["room-code"]) == 0){
+                                    echo "<tr>";
+                                    echo "<td style='color: green;'>";
+                                    echo unserialize($row)->getId();
+                                    echo "</td>";
+                                    echo "<td style='color: green;'>";
+                                    echo unserialize($row)->getName();
+                                    echo "</td>";
+                                    echo "</tr>";
+                                }
                             }
                         }
                     ?>
