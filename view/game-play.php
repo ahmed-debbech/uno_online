@@ -1,6 +1,16 @@
 <?php 
 session_start();
-        include("../entities/player.php");
+include("../entities/player.php");
+include("../entities/room.php");
+$fileName = "../avail-rooms/".$_GET["room-code"].".txt";
+$file = fopen($fileName, "r");
+$content = fread($file, filesize($fileName));
+$ucont = unserialize($content);
+fclose($file);
+$ucont->setStarted();
+$file = fopen($fileName, "w");
+fwrite($file, serialize($ucont));
+fclose($file);
 ?>
 <html>
     <head>

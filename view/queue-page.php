@@ -4,7 +4,7 @@ include_once("../entities/player.php");
 ?>
 <html>
     <head>
-    <meta http-equiv="refresh" content="5; URL=queue-page.php<?php echo '?room-code='.$_GET['room-code']."&player-id=".$_GET['player-id'];?>">
+    <meta http-equiv="refresh" content="1; URL=../core/check-started.php<?php echo '?room-code='.$_GET['room-code']."&player-id=".$_GET['player-id'];?>">
         <link rel="stylesheet" type="text/css" href="create-room-theme.css">
         <script src="check-fields.js" type="text/javascript"></script>
         <script src="refresher.js" type="text/javascript"></script>

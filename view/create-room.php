@@ -1,6 +1,7 @@
 <?php 
 include("../entities/player.php");
-session_start(); ?>
+session_start(); 
+?>
 <html>
     <head>
     <meta http-equiv="refresh" content="5; URL=create-room.php<?php echo '?room-code='.$_GET['room-code']."&player-id=".$_GET['player-id'];?>">
@@ -38,7 +39,7 @@ session_start(); ?>
             Press Start to start game when you are satistifed with the number of players.</h2>
             Write Down your name first:
             <form action="../view/game-play.php" method="get" onsubmit="return checkCreate();">
-                <input type="hidden" name="room-code" value="<?php echo $_GET['code']?>">
+                <input type="hidden" name="room-code" value="<?php echo $_GET['room-code']?>">
                 <input type="text" id="player-name" name="player-name"><br>
                 <input type="submit" id="start-button" value="Start">
             </form>

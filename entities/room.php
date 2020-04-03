@@ -1,10 +1,12 @@
 <?php
-include ("player.php");
+include_once ("player.php");
 class Room {
     private $roomCode;
     private $arrayOfPlayers;
     private $numberOfPlayersRemaining;
+    private $isStarted;
     function __construct($code, $initialPlayer){
+        $this->isStarted = 0;
         $this->numberOfPlayersRemaining = 3;
         $this->roomCode = $code;
         $arrayOfPlayers = array();
@@ -29,13 +31,14 @@ class Room {
         $fileName = "../avail-rooms/".$this->roomCode.".txt";
         shell_exec("chmod 777 ".$fileName);
         $file = fopen($fileName, "w");
-        if($file == FALSE){
-            //lets create the available-rooms dir
-            mkdir("../avail-rooms", 777);
-            $file = fopen($fileName, "w");
-        }
         fwrite($file, serialize($this));
         fclose($file);
+    }
+    public function setStarted(){
+        $this->isStarted = 1;
+    }
+    public function isStarted(){
+        return $this->isStarted;
     }
 }
 ?>
