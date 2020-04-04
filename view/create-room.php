@@ -1,5 +1,6 @@
 <?php 
 include("../entities/player.php");
+include("../entities/room.php");
 session_start(); 
 ?>
 <html>
@@ -14,7 +15,13 @@ session_start();
             <h1>Welcome To UNO Online :) enjoy!</h1>
             <h3 id="room-code" style="background-color: blue; color: whitesmoke;">Room code: <?php echo $_GET["room-code"]?></h3>
             <h4 style="color: white;">Give that code to your friends to join you (max 4 players)</h4>
-            <h4 style="color: white;">Players remaining: 99</h4>
+            <h4 style="color: white;">Players remaining:
+            <?php 
+                $file = fopen("../avail-rooms/".$_GET["room-code"].".txt", "r");
+                $c = fread($file, filesize("../avail-rooms/".$_GET["room-code"].".txt"));
+                echo unserialize($c)->getRemaining();
+                fclose($file);
+            ?> </h4>
             <table border="3px">
                 <tr>
                     <th>Player_ID</th>
@@ -43,7 +50,7 @@ session_start();
             </table>
             <h2 style="color: white;">Waiting for other players to join... <br>
             Press Start to start game when you are satistifed with the number of players.</h2>
-            Write Down your name first:
+            <p style="color: white;">Write Down your name first:</p>
             <form action="../view/game-play.php" method="get" onsubmit="return checkCreate();">
                 <input type="hidden" name="room-code" value="<?php echo $_GET['room-code']?>">
                 <input type="text" id="player-name" name="player-name"><br>
