@@ -19,6 +19,7 @@
             if($r->getRemaining() == 0){
                 echo "Room is full!";
             }else{
+                $r->addPlayer($player);
                 $r->decrementRemaining();
                 $file = fopen("../avail-rooms/".$_GET["roomnum"].".txt", "w");
                 fwrite($file, serialize($r));

@@ -2,14 +2,13 @@
 include_once ("player.php");
 class Room {
     private $roomCode;
-    private $arrayOfPlayers;
+    private $arrayOfPlayers = array();
     private $numberOfPlayersRemaining;
     private $isStarted;
     function __construct($code, $initialPlayer){
         $this->isStarted = 0;
         $this->numberOfPlayersRemaining = 3;
         $this->roomCode = $code;
-        $arrayOfPlayers = array();
         array_push($arrayOfPlayers, $initialPlayer);
     }
     public function getRoomCode(){
@@ -19,7 +18,7 @@ class Room {
         return $this->arrayOfPlayers;
     }   
     public function addPlayer($theplayer){
-        array_push($arrayOfPlayers, $theplayer);
+        array_push($this->arrayOfPlayers, $theplayer);
     }
     public function getRemaining(){
         return $this->numberOfPlayersRemaining;

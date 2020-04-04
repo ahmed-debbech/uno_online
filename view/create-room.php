@@ -32,19 +32,20 @@ session_start();
                     <td style='color: green;'>You</td>
                 </tr>
                     <?php
-                        foreach($_SESSION as $row){
-                            if(unserialize($row)->getId() != $_GET["player-id"]){
-                                if(strcmp(unserialize($row)->getAssignedRoom(), $_GET["room-code"]) == 0){
-                                    echo "<tr>";
-                                    echo "<td style='color: green;'>";
-                                    echo unserialize($row)->getId();
-                                    echo "</td>";
-                                    echo "<td style='color: green;'>";
-                                    echo unserialize($row)->getName();
-                                    echo "</td>";
-                                    echo "</tr>";
-                                }
-                            }
+                        $file = fopen("../avail-rooms/".$_GET["room-code"].".txt", "r");
+                        $c = fread($file, filesize("../avail-rooms/".$_GET["room-code"].".txt"));
+                        $serialized = unserialize($c);
+                        $array = $serialized->getPlayers();
+                        fclose($file);
+                        for($i=0; $i<=sizeof($array)-1; $i++){
+                            echo "<tr>";
+                            echo "<td style='color: green;'>";
+                            echo $array[$i]->getId();
+                            echo "</td>";
+                            echo "<td style='color: green;'>";
+                            echo $array[$i]->getName();
+                            echo "</td>";
+                            echo "</tr>";
                         }
                     ?>
             </table>
