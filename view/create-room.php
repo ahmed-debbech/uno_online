@@ -55,6 +55,7 @@ session_start();
             <form action="../view/game-play.php" method="get" onsubmit="return checkCreate();">
                 <input type="hidden" name="room-code" value="<?php echo $_GET['room-code']?>">
                 <input type="text" id="player-name" name="player-name"><br>
+                <input type="hidden" id="player-id" name="player-id" value="<?php echo $_GET['player-id'];?>">
                 <input type="submit" id="start-button" value="Start">
             </form>
         </center>

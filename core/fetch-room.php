@@ -1,8 +1,18 @@
 <?php
     session_start();
     include_once("../entities/room.php");
-    $playerId = rand(1000,9999);
-    $playerId .= "p";
+    function checkIntegrity($x){
+        foreach($_SESSION as $player){
+            if(unserialize($player)->getId() == $x){
+                return 0;
+            }
+        }
+        return 1;
+    }
+    do{
+        $playerId = rand(1000,9999);
+        $playerId .= "p";
+    }while(checkIntegrity($playerId) == 0);
     $player = new Player($_GET["player-name"],$playerId,"-1r");
     $file = fopen("../avail-rooms/".$_GET["roomnum"].".txt", "r");
     if($file != FALSE){

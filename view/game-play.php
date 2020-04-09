@@ -26,9 +26,20 @@ fclose($file);
                     <td>
                         <table border="3px">
                             <tr>
-                                <td>Not Available - rest: 0</td>
-                                <td>Not Available - rest: 0</td>
-                                <td>Not Available - rest: 0</td>
+                                <?php
+                                $fileName = "../avail-rooms/".$_GET["room-code"].".txt";
+                                $file = fopen($fileName, "r");
+                                $content = fread($file, filesize($fileName));
+                                fclose($file);
+                                $unser = unserialize($content);
+                                for($i=0; $i<(4-$unser->getRemaining()); $i++){
+                                    if(unserialize($_SESSION[$_GET["player-id"]])->getName() != ($unser->getPlayers())[$i]->getName()){
+                                        echo "<td>";
+                                        echo unserialize($_SESSION[$_GET["player-id"]])->getName();
+                                        echo "</td>";
+                                    }
+                                }
+                                ?>
                             </td>
                             </tr>
                         </table>
