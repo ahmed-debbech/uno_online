@@ -32,10 +32,11 @@ fclose($file);
                                 $content = fread($file, filesize($fileName));
                                 fclose($file);
                                 $unser = unserialize($content);
-                                for($i=0; $i<(4-$unser->getRemaining()); $i++){
-                                    if(unserialize($_SESSION[$_GET["player-id"]])->getName() != ($unser->getPlayers())[$i]->getName()){
+                                $array = $unser->getPlayers();
+                                for($i=0; $i<sizeof($array); $i++){
+                                    if(unserialize($_SESSION[$_GET["player-id"]])->getName() != $array[$i]->getName()){
                                         echo "<td>";
-                                        echo unserialize($_SESSION[$_GET["player-id"]])->getName();
+                                        echo $array[$i]->getName();
                                         echo "</td>";
                                     }
                                 }
