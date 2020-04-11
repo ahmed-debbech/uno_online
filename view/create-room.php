@@ -51,10 +51,9 @@ session_start();
             </table>
             <h2 style="color: white;">Waiting for other players to join... <br>
             Press Start to start game when you are satistifed with the number of players.</h2>
-            <p style="color: white;">Write Down your name first:</p>
-            <form action="../view/game-play.php" method="get" onsubmit="return checkCreate();">
+            <form action="../core/check-players.php" method="get" onsubmit="return checkCreate();">
                 <input type="hidden" name="room-code" value="<?php echo $_GET['room-code']?>">
-                <input type="text" id="player-name" name="player-name"><br>
+                <input type="hidden" id="player-name" name="player-name" value="<?php echo $_GET["player-name"];?>"><br>
                 <input type="hidden" id="player-id" name="player-id" value="<?php echo $_GET['player-id'];?>">
                 <input type="submit" id="start-button" value="Start">
             </form>
