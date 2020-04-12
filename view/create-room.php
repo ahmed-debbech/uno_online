@@ -5,7 +5,7 @@ session_start();
 ?>
 <html>
     <head>
-    <meta http-equiv="refresh" content="5; URL=create-room.php<?php echo '?room-code='.$_GET['room-code']."&player-id=".$_GET['player-id'];?>">
+    <meta http-equiv="refresh" content="5; URL=create-room.php<?php echo '?room-code='.$_GET['room-code']."&player-id=".$_GET['player-id']."&player-name".$_GET["player-name"];?>">
         <link rel="stylesheet" type="text/css" href="create-room-theme.css">
         <script src="check-fields.js" type="text/javascript"></script>
         <script src="refresher.js" type="text/javascript"></script>
@@ -51,6 +51,7 @@ session_start();
             </table>
             <h2 style="color: white;">Waiting for other players to join... <br>
             Press Start to start game when you are satistifed with the number of players.</h2>
+            <?php echo $_GET["player-name"];?>
             <form action="../core/check-players.php" method="get" onsubmit="return checkCreate();">
                 <input type="hidden" name="room-code" value="<?php echo $_GET['room-code']?>">
                 <input type="hidden" id="player-name" name="player-name" value="<?php echo $_GET["player-name"];?>"><br>

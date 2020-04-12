@@ -17,6 +17,7 @@
         }else{
             return 0;
         }
+        fclose($file);
     }
     do{
         $playerId = rand(1000,9999);
@@ -30,5 +31,5 @@
     $_SESSION[$playerId] = serialize($initialPlayer); 
     $room = new Room($roomCode, $initialPlayer);
     $room->addRoomToDB();
-    header("Location: ../view/create-room.php?room-code=".$room->getRoomCode()."&player-id=".$initialPlayer->getId());
+    header("Location: ../view/create-room.php?room-code=".$room->getRoomCode()."&player-id=".$initialPlayer->getId()."&player-name=".$initialPlayer->getName());
 ?>  
