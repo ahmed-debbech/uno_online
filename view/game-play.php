@@ -33,6 +33,7 @@ fclose($file);
                                 fclose($file);
                                 $unser = unserialize($content);
                                 $array = $unser->getPlayers();
+                                var_dump($array);
                                 for($i=0; $i<sizeof($array); $i++){
                                     if(unserialize($_SESSION[$_GET["player-id"]])->getName() != $array[$i]->getName()){
                                         echo "<td>";

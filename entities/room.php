@@ -9,7 +9,7 @@ class Room {
         $this->isStarted = 0;
         $this->numberOfPlayersRemaining = 3;
         $this->roomCode = $code;
-        array_push($arrayOfPlayers, $initialPlayer);
+        array_push($this->arrayOfPlayers, $initialPlayer);
     }
     public function getRoomCode(){
         return $this->roomCode;
