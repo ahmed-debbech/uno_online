@@ -38,14 +38,16 @@ session_start();
                         $array = $serialized->getPlayers();
                         fclose($file);
                         for($i=0; $i<=sizeof($array)-1; $i++){
-                            echo "<tr>";
-                            echo "<td style='color: green;'>";
-                            echo $array[$i]->getId();
-                            echo "</td>";
-                            echo "<td style='color: green;'>";
-                            echo $array[$i]->getName();
-                            echo "</td>";
-                            echo "</tr>";
+                            if($array[$i]->getId() != $_GET["player-id"]){
+                                echo "<tr>";
+                                echo "<td style='color: green;'>";
+                                echo $array[$i]->getId();
+                                echo "</td>";
+                                echo "<td style='color: green;'>";
+                                echo $array[$i]->getName();
+                                echo "</td>";
+                                echo "</tr>";
+                            }
                         }
                     ?>
             </table>
