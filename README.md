@@ -1,6 +1,5 @@
 # Uno Online!
-Is a minimal free Uno game online and multiplayer.
-**The project is postponed to a later time.
+Is a minimal free Uno game online.
 
 ### How to use:
 There's no content hosted at the moment nor available domain.
