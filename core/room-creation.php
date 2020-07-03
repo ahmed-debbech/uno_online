@@ -3,21 +3,26 @@
     include("../entities/room.php");
     include_once("../entities/player.php");
     function checkPlayerIdIntegrity($x){
-        foreach($_SESSION as $player){
-            if(unserialize($player)->getId() == $x){
-                return 0;
-            }
+        $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+        $sql = "select * from player where id='".$x."'";
+        $m=0;
+        $res = mysqli_query($link,$sql, $m); 
+        $num= mysqli_num_rows($res);
+        if($num == 0){
+            return 1;
         }
-        return 1;
+        return 0;
     }
     function checkRoomIdIntegrity($x){
-        $file = fopen("../avail-rooms/".$x.".txt", "r");
-        if($file == FALSE){
+        $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+        $sql = "select * from room where roomCode='".$x."'";
+        $m=0;
+        $res = mysqli_query($link,$sql, $m); 
+        $num= mysqli_num_rows($res);
+        if($num == 0){
             return 1;
-        }else{
-            return 0;
         }
-        fclose($file);
+        return 0;
     }
     do{
         $playerId = rand(1000,9999);
@@ -28,8 +33,9 @@
         $roomCode .= "r";
     }while(checkRoomIdIntegrity($roomCode) == 0);
     $initialPlayer = new Player($_GET["player-name"],$playerId,$roomCode);
-    $_SESSION[$playerId] = serialize($initialPlayer); 
     $room = new Room($roomCode, $initialPlayer);
     $room->addRoomToDB();
+    $_SESSION["player_id"] = $initialPlayer->getId();
+    $initialPlayer->addPlayerToDB();
     header("Location: ../view/create-room.php?room-code=".$room->getRoomCode()."&player-id=".$initialPlayer->getId()."&player-name=".$initialPlayer->getName());
 ?>  

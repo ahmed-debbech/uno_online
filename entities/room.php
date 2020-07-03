@@ -27,11 +27,19 @@ class Room {
         $this->numberOfPlayersRemaining--;
     }
     public function addRoomToDB(){
-        $fileName = "../avail-rooms/".$this->roomCode.".txt";
-        shell_exec("chmod 777 ".$fileName);
-        $file = fopen($fileName, "w");
-        fwrite($file, serialize($this));
-        fclose($file);
+        $sql="insert into room (roomCode,numberOfPlayersRemaining,isStarted) values (:roomCode,:numberOfPlayersRemaining,:isStarted)";
+        $db = Connector::getConnexion();
+        try{
+            $req=$db->prepare($sql);
+            $req->bindValue(':roomCode',$this->roomCode);
+            $req->bindValue(':numberOfPlayersRemaining',$this->numberOfPlayersRemaining);
+            $req->bindValue(':isStarted',$this->isStarted);
+            $yo = $req->execute();
+            var_dump($yo);
+        }
+        catch (Exception $e){
+            echo 'Error: '.$e->getMessage();
+        }
     }
     public function setStarted(){
         $this->isStarted = 1;
