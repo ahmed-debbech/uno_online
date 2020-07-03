@@ -17,37 +17,33 @@ session_start();
             <h4 style="color: white;">Give that code to your friends to join you (max 4 players)</h4>
             <h4 style="color: white;">Players remaining:         
              <?php 
-                $file = fopen("../avail-rooms/".$_GET["room-code"].".txt", "r");
-                $c = fread($file, filesize("../avail-rooms/".$_GET["room-code"].".txt"));
-                echo unserialize($c)->getRemaining();
-                fclose($file);
+                $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+                $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
+                $result = mysqli_query($link, $sql);
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                echo $row["numberOfPlayersRemaining"];
+                mysqli_free_result($result);
+                mysqli_close($link);
             ?></h4>
             <table border="3px">
                 <tr>
                     <th>Player_ID</th>
                     <th>Name</th>
                 </tr>
-                <tr>
-                    <td style='color: green;' ><?php echo $_GET["player-id"];?></td>
-                    <td style='color: green;'>You</td>
-                </tr>
                     <?php
-                        $file = fopen("../avail-rooms/".$_GET["room-code"].".txt", "r");
-                        $c = fread($file, filesize("../avail-rooms/".$_GET["room-code"].".txt"));
-                        $serialized = unserialize($c);
-                        $array = $serialized->getPlayers();
-                        fclose($file);
-                        for($i=0; $i<=sizeof($array)-1; $i++){
-                            if($array[$i]->getId() != $_GET["player-id"]){
-                                echo "<tr>";
-                                echo "<td style='color: green;'>";
-                                echo $array[$i]->getId();
-                                echo "</td>";
-                                echo "<td style='color: green;'>";
-                                echo $array[$i]->getName();
-                                echo "</td>";
-                                echo "</tr>";
-                            }
+                        $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+                        $sql = "select * from player where roomCode='".$_GET["room-code"]."'";
+                        $result = mysqli_query($link, $sql);
+                        $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                        foreach($row as $array){
+                            echo "<tr>";
+                            echo "<td style='color: green;'>";
+                            echo $array["id"];
+                            echo "</td>";
+                            echo "<td style='color: green;'>";
+                            echo $array["name"];
+                            echo "</td>";
+                            echo "</tr>";
                         }
                     ?>
             </table>
