@@ -10,7 +10,13 @@ include_once("../entities/player.php");
         <script src="refresher.js" type="text/javascript"></script>
     </head>
     <center>
-        <h1>Welcome to the room, <?php echo unserialize($_SESSION[$_GET["player-id"]])->getName();?></h1>
+        <h1>Welcome to the room, <?php
+         $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+         $sql = "select * from player where id='".$_GET["player-id"]."'";
+         $res = mysqli_query($link,$sql); 
+         $list = mysqli_fetch_array($res);
+         echo $list["name"];
+         ?></h1>
         <h1>You are in room: <?php echo $_GET["room-code"]; ?></h1>
         <h4 style="color: white;">Please wait until the room creator submits the list of joined players.</h4>
         <h4 style="color: white;">You player id is: <?php echo $_GET["player-id"]; ?></h4>
