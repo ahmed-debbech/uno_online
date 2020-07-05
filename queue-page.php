@@ -11,7 +11,7 @@ include_once("entities/player.php");
     </head>
     <center>
         <h1>Welcome to the room, <?php
-         $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
          $sql = "select * from player where id='".$_GET["player-id"]."'";
          $res = mysqli_query($link,$sql); 
          $list = mysqli_fetch_array($res);

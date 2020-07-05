@@ -24,14 +24,14 @@
         return true;
     }
     function getRemaining($x){
-        $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select * from room where roomCode='".$x."'";
         $res = mysqli_query($link,$sql); 
         $list = mysqli_fetch_array($res);
         return $list["numberOfPlayersRemaining"];
     }
     if(checkRoomAvailable($_GET["roomnum"])){
-        $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $x = getRemaining($_GET["roomnum"])-1;
         if($x > -1){
             $sql = "update room set numberOfPlayersRemaining='".$x."' where roomCode='".$_GET["roomnum"]."'";

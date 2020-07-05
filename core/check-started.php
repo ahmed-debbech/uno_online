@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+$link = mysqli_connect($serverIp, $username, $pass, $dbName);
 $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
 
 $res = mysqli_query($link,$sql); 
