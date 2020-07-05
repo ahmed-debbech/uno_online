@@ -36,6 +36,7 @@
     $room = new Room($roomCode, $initialPlayer);
     $room->addRoomToDB();
     $_SESSION["player_id"] = $initialPlayer->getId();
+    $_SESSION["name"] = $initialPlayer->getName();
     $initialPlayer->addPlayerToDB();
     header("Location: ../view/create-room.php?room-code=".$room->getRoomCode()."&player-id=".$initialPlayer->getId()."&player-name=".$initialPlayer->getName());
 ?>  

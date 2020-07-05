@@ -4,7 +4,6 @@ $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
 
 $res = mysqli_query($link,$sql); 
 $list = mysqli_fetch_array($res);
-mysqli_free_result($result);
 mysqli_close($link);
 
 if($list["numberOfPlayersRemaining"] < 3){

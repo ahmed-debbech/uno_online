@@ -25,9 +25,11 @@ include("../entities/room.php");
                                 mysqli_close($link);
 
                                 foreach($list as $row){
-                                    echo "<td>";
-                                    echo $row["name"]." - Cards: ".$row["numCards"];
-                                    echo "</td>";
+                                    if($row["name"] != $_SESSION["name"]){
+                                        echo "<td>";
+                                        echo $row["name"]." - Cards: ".$row["numCards"];
+                                        echo "</td>";
+                                    }
                                 }
                                 ?>
                             </td>
