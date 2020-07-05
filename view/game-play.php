@@ -2,15 +2,6 @@
 session_start();
 include("../entities/player.php");
 include("../entities/room.php");
-$fileName = "../avail-rooms/".$_GET["room-code"].".txt";
-$file = fopen($fileName, "r");
-$content = fread($file, filesize($fileName));
-$ucont = unserialize($content);
-fclose($file);
-$ucont->setStarted();
-$file = fopen($fileName, "w");
-fwrite($file, serialize($ucont));
-fclose($file);
 ?>
 <html>
     <head>
@@ -27,18 +18,16 @@ fclose($file);
                         <table border="3px">
                             <tr>
                                 <?php
-                                $fileName = "../avail-rooms/".$_GET["room-code"].".txt";
-                                $file = fopen($fileName, "r");
-                                $content = fread($file, filesize($fileName));
-                                fclose($file);
-                                $unser = unserialize($content);
-                                $array = $unser->getPlayers();
-                                for($i=0; $i<sizeof($array); $i++){
-                                    if(unserialize($_SESSION[$_GET["player-id"]])->getName() != $array[$i]->getName()){
-                                        echo "<td>";
-                                        echo $array[$i]->getName()." - Cards: ".$array[$i]->getNumCards();
-                                        echo "</td>";
-                                    }
+                                $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+                                $sql = "select * from player where roomCode='".$_GET["room-code"]."'";
+                                $res = mysqli_query($link,$sql); 
+                                $list = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                                mysqli_close($link);
+
+                                foreach($list as $row){
+                                    echo "<td>";
+                                    echo $row["name"]." - Cards: ".$row["numCards"];
+                                    echo "</td>";
                                 }
                                 ?>
                             </td>
