@@ -44,7 +44,7 @@
             $player->addPlayerToDB();
             $_SESSION["name"] = $player->getName();
             $_SESSION["player_id"] = $player->getId();
-            header("Location: ../view/queue-page.php?player-id=".$playerId."&room-code=".$_GET["roomnum"]);
+            header("Location: ../queue-page.php?player-id=".$playerId."&room-code=".$_GET["roomnum"]);
         }else{
             echo "Room is full!";
         }

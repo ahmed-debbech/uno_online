@@ -13,7 +13,7 @@ if($list["numberOfPlayersRemaining"] < 3){
     mysqli_free_result($result);
     mysqli_close($link);
 
-    header("Location: ../view/game-play.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
+    header("Location: ../game-play.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
 }else{
     echo "Not enough players go back and wait for players to join.";
 }

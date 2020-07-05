@@ -1,11 +1,11 @@
 <?php 
 session_start();
-include("../entities/player.php");
-include("../entities/room.php");
+include("entities/player.php");
+include("entities/room.php");
 ?>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="game-play-theme.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/game-play-theme.css">
     </head>
     <body>
         <center>

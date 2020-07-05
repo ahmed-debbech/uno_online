@@ -1,10 +1,9 @@
 <?php
-include_once("../phpconnect.php");
 class Player {
     private $id;
     private $name;
     private $numCards;
-    private $roomAssigned; //"-1r" if none
+    private $roomAssigned;
     public function __construct($name,$id,$room){
      $this->id = $id;
      $this->name = $name;
@@ -30,6 +29,7 @@ class Player {
         $this->numCards = $cards;
     }
     public function addPlayerToDB(){
+        include_once("../phpconnect.php");
         $sql="insert into player (id,name,numCards,roomCode) values (:id,:name,:numCards,:roomCode);";
         $db = Connector::getConnexion();
         try{
