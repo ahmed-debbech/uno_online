@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include_once("entities/player.php");
+include_once("keys.php");
 ?>
 <html>
     <head>

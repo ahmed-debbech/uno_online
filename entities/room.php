@@ -2,21 +2,15 @@
 include_once ("player.php");
 class Room {
     private $roomCode;
-    private $arrayOfPlayers = array();
     private $numberOfPlayersRemaining;
     private $isStarted;
     function __construct($code, $initialPlayer){
         $this->isStarted = 0;
         $this->numberOfPlayersRemaining = 3;
-        $this->roomCode = $code;
-        array_push($this->arrayOfPlayers, $initialPlayer);
-    }
+        $this->roomCode = $code;    }
     public function getRoomCode(){
         return $this->roomCode;
     }
-    public function getPlayers(){
-        return $this->arrayOfPlayers;
-    }   
     public function addPlayer($theplayer){
         array_push($this->arrayOfPlayers, $theplayer);
     }
@@ -27,6 +21,7 @@ class Room {
         $this->numberOfPlayersRemaining--;
     }
     public function addRoomToDB(){
+        include ("../phpconnect.php");
         $sql="insert into room (roomCode,numberOfPlayersRemaining,isStarted) values (:roomCode,:numberOfPlayersRemaining,:isStarted)";
         $db = Connector::getConnexion();
         try{

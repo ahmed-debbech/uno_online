@@ -3,6 +3,7 @@
     include("../entities/room.php");
     include_once("../entities/player.php");
     function checkPlayerIdIntegrity($x){
+        include("../keys.php");
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select * from player where id='".$x."'";
         $m=0;
@@ -14,10 +15,10 @@
         return 0;
     }
     function checkRoomIdIntegrity($x){
+        include("../keys.php");
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select * from room where roomCode='".$x."'";
-        $m=0;
-        $res = mysqli_query($link,$sql, $m); 
+        $res = mysqli_query($link,$sql); 
         $num= mysqli_num_rows($res);
         if($num == 0){
             return 1;

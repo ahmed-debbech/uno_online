@@ -2,6 +2,7 @@
 include("entities/player.php");
 include("entities/room.php");
 session_start(); 
+include_once("keys.php");
 ?>
 <html>
     <head>
@@ -17,7 +18,10 @@ session_start();
             <h4 style="color: white;">Give that code to your friends to join you (max 4 players)</h4>
             <h4 style="color: white;">Players remaining:         
              <?php 
-                $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+                $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                if (!$link) {
+                    die('<strong>You were not able to connect to your database because ' . mysqli_error() . '</strong>');
+                }
                 $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
                 $result = mysqli_query($link, $sql);
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -31,7 +35,10 @@ session_start();
                     <th>Name</th>
                 </tr>
                     <?php
-                        $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+                        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                        if (!$link) {
+                            die('<strong>You were not able to connect to your database because ' . mysqli_error() . '</strong>');
+                        }
                         $sql = "select * from player where roomCode='".$_GET["room-code"]."'";
                         $result = mysqli_query($link, $sql);
                         $row = mysqli_fetch_all($result, MYSQLI_ASSOC);

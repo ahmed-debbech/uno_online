@@ -1,4 +1,5 @@
 <?php
+include_once("../keys.php");
 $link = mysqli_connect($serverIp, $username, $pass, $dbName);
 $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
 

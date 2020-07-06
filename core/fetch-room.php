@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once("../entities/room.php");
+    include_once("../keys.php");
     function checkIntegrity($x){
         $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
         $sql = "select * from player where id='".$x."'";

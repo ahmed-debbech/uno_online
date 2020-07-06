@@ -2,6 +2,7 @@
 session_start();
 include("entities/player.php");
 include("entities/room.php");
+include_once("keys.php");
 ?>
 <html>
     <head>
@@ -18,7 +19,7 @@ include("entities/room.php");
                         <table border="3px">
                             <tr>
                                 <?php
-                                $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+                                $link = mysqli_connect($serverIp, $username, $pass, $dbName);
                                 $sql = "select * from player where roomCode='".$_GET["room-code"]."'";
                                 $res = mysqli_query($link,$sql); 
                                 $list = mysqli_fetch_all($res, MYSQLI_ASSOC);
