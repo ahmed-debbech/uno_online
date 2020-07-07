@@ -38,9 +38,8 @@ class Player {
             $req->bindValue(':name',$this->name);
             $req->bindValue(':numCards',$this->numCards);
             $req->bindValue(':roomCode',$this->roomAssigned);
-            echo $this->id . $this->name. $this->numCards. $this->roomAssigned;
+            //echo $this->id . $this->name. $this->numCards. $this->roomAssigned;
             $yo = $req->execute();
-            var_dump($yo);
         }
         catch (Exception $e){
             echo 'Error: '.$e->getMessage();

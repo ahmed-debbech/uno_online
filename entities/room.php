@@ -30,7 +30,6 @@ class Room {
             $req->bindValue(':numberOfPlayersRemaining',$this->numberOfPlayersRemaining);
             $req->bindValue(':isStarted',$this->isStarted);
             $yo = $req->execute();
-            var_dump($yo);
         }
         catch (Exception $e){
             echo 'Error: '.$e->getMessage();

@@ -1,9 +1,9 @@
 <?php
     session_start();
     include_once("../entities/room.php");
-    include_once("../keys.php");
     function checkIntegrity($x){
-        $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+        include("../keys.php");
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select * from player where id='".$x."'";
         $m=0;
         $res = mysqli_query($link,$sql, $m); 
@@ -14,7 +14,8 @@
         return 0;
     }
     function checkRoomAvailable($x){
-        $link = mysqli_connect("127.0.0.1", "root", "", "uno_online");
+        include("../keys.php");
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select * from room where roomCode='".$x."'";
         $m=0;
         $res = mysqli_query($link,$sql, $m); 
@@ -25,6 +26,7 @@
         return true;
     }
     function getRemaining($x){
+        include("../keys.php");
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select * from room where roomCode='".$x."'";
         $res = mysqli_query($link,$sql); 
@@ -32,6 +34,7 @@
         return $list["numberOfPlayersRemaining"];
     }
     if(checkRoomAvailable($_GET["roomnum"])){
+        include("../keys.php");
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $x = getRemaining($_GET["roomnum"])-1;
         if($x > -1){
