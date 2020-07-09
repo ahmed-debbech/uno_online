@@ -12,8 +12,7 @@ if($list["numberOfPlayersRemaining"] < 3){
     $sql = "update room set isStarted='1' where roomCode='".$_GET["room-code"]."'";
     $res = mysqli_query($link,$sql); 
     mysqli_close($link);
-
-    header("Location: ../game-play.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
+    header("Location: game/prepare-table.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
 }else{
     echo "Not enough players go back and wait for players to join.";
 }

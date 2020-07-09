@@ -33,8 +33,8 @@
         $roomCode = rand(1000,9999);
         $roomCode .= "r";
     }while(checkRoomIdIntegrity($roomCode) == 0);
-    $initialPlayer = new Player($_GET["player-name"],$playerId,$roomCode);
-    $room = new Room($roomCode, $initialPlayer);
+    $initialPlayer = new Player($_GET["player-name"],$playerId,$roomCode); 
+    $room = new Room($roomCode, $initialPlayer,"-");
     $room->addRoomToDB();
     $_SESSION["player_id"] = $initialPlayer->getId();
     $_SESSION["name"] = $initialPlayer->getName();
