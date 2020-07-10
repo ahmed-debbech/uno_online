@@ -1,6 +1,9 @@
 <?php
     include_once("../../entities/game/shuffler.php");
+    include_once("../../entities/game/stack.php");
     $shuf = new Shuffler();
-    $shuf->shuffleCards();
-    header("Location: ../../game-play.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
+    $stack = new Stack($_GET["room-code"] ,108, $_GET["room-code"],1);
+    $shuf->createStack($stack);
+    $shuf->shuffleCards($stack);
+    //header("Location: ../../game-play.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
 ?>
