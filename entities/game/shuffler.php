@@ -42,7 +42,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order, $content, "-");
             array_push($arr, $card);
             $number++;
         }
@@ -110,7 +110,7 @@ class Shuffler{
             $number++;
         }
         for($i=0; $i<=count($arr)-1; $i++){
-            echo $arr[$i]->getContent()."//".$arr[$i]->getOrderInStack();
+            echo $arr[$i]->getContent()."|".$arr[$i]->getOrderInStack()." ";
         }
         echo "*******".count($arr);
     }
