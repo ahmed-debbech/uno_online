@@ -1,6 +1,5 @@
 <?php
 include_once("card.php");
-
 class Shuffler{
     function __construct(){
 
@@ -9,13 +8,13 @@ class Shuffler{
 
     }
     public function createStack($stack){
-        include ("../../phpconnect.php");
+        include_once("../../phpconnect.php");
         $sql="insert into stack (stack_id, numberOfCardsRemaining, roomCode, nextCardNumber) values (:id, :nocr, :rc, :ncn)";
         $db = Connector::getConnexion();
         try{
             $req=$db->prepare($sql);
-            $req->bindValue(':id',$stack->getNOCR());
-            $req->bindValue(':nocr',$stack->getId());
+            $req->bindValue(':id',$stack->getId());
+            $req->bindValue(':nocr',$stack->getNOCR());
             $req->bindValue(':rc',$stack->getRoomCode());
             $req->bindValue(':ncn',$stack->getNCN());
             $yo = $req->execute();
@@ -31,6 +30,30 @@ class Shuffler{
             }
         }
         return true;
+    }
+    private function store($array){
+        include_once("../../phpconnect.php");
+        /*for($i=0; $i<=count($array)-1; $i++){
+            echo $array[$i]->getContent()."|".$array[$i]->getOrderInStack()." ";
+        }*/
+        for($i=0; $i<=107; $i++){
+            $sql="insert into card (stack_id, number, order_in_stack, content, id) values (:stack_id, :number, :order_in_stack, :content, :id)";
+            $db = Connector::getConnexion();
+            try{
+                $req=$db->prepare($sql);
+                $req->bindValue(':stack_id',$array[$i]->getStackId());
+                $req->bindValue(':number',$array[$i]->getNumber());
+                $req->bindValue(':order_in_stack',$array[$i]->getOrderInStack());
+                $req->bindValue(':content',$array[$i]->getContent());
+                $req->bindValue(':id', $array[$i]->getPlayerId());
+                //echo $array[$i]->getContent();
+                $yo = $req->execute();
+                var_dump( $yo);
+            }
+            catch (Exception $e){
+                echo 'Error: '.$e->getMessage();
+            }
+        }
     }
     public function shuffleCards($stack){
         $arr = array();
@@ -109,10 +132,46 @@ class Shuffler{
             array_push($arr, $card);
             $number++;
         }
-        for($i=0; $i<=count($arr)-1; $i++){
-            echo $arr[$i]->getContent()."|".$arr[$i]->getOrderInStack()." ";
+        //other than number cards 
+        $color = "r";
+        for($i=0; $i<=7; $i++){
+            $content = "blo-".$color;
+            do{
+                $order = rand(1,108);
+            }while($this->checkOrder($order, $arr, $number) == false);
+            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            array_push($arr, $card);
+            $content = "inv-".$color;
+            do{
+                $order = rand(1,108);
+            }while($this->checkOrder($order, $arr, $number) == false);
+            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            array_push($arr, $card);
+            $content = "+2-".$color;
+            do{
+                $order = rand(1,108);
+            }while($this->checkOrder($order, $arr, $number) == false);
+            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            array_push($arr, $card);
+            if($color == "r") $color="y"; else
+            if($color == "y") $color="g"; else
+            if($color == "g") $color = "b"; else
+            if($color == "b") $color = "r";
         }
-        echo "*******".count($arr);
+        //wild cards
+        for($i=0; $i<=7; $i++){
+            if($i<=3){
+                $content = "wc";
+            }else{
+                $content = "+4";
+            }
+            do{
+                $order = rand(1,108);
+            }while($this->checkOrder($order, $arr, $number) == false);
+            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            array_push($arr, $card);
+        }
+        $this->store($arr);
     }
 }
 ?>

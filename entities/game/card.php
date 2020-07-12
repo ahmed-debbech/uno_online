@@ -18,5 +18,8 @@ class Card{
     public function getContent(){
         return $this->content;
     }
+    public function getStackId(){ return $this->stack_id;}
+    public function getNumber(){return $this->number;}
+    public function getPlayerId(){return $this->id;}
 }
 ?>
