@@ -46,9 +46,16 @@ class Shuffler{
                 $req->bindValue(':order_in_stack',$array[$i]->getOrderInStack());
                 $req->bindValue(':content',$array[$i]->getContent());
                 $req->bindValue(':id', $array[$i]->getPlayerId());
-                //echo $array[$i]->getContent();
+                echo $array[$i]->getStackId();
+                echo $array[$i]->getNumber();
+                echo "|";
+                echo $array[$i]->getOrderInStack();
+                echo "|";
+                echo $array[$i]->getContent();
+                echo $array[$i]->getPlayerId();
+                echo "<br>";
                 $yo = $req->execute();
-                var_dump( $yo);
+                //var_dump( $yo);
             }
             catch (Exception $e){
                 echo 'Error: '.$e->getMessage();
@@ -65,7 +72,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order, $content, "-");
+            $card = new Card($stack->getId(), $number, $order, $content, NULL);
             array_push($arr, $card);
             $number++;
         }
@@ -74,7 +81,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
             $number++;
         }
@@ -83,7 +90,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
             $number++;
         }
@@ -92,7 +99,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
             $number++;
         }
@@ -101,7 +108,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
             $number++;
         }
@@ -110,7 +117,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
             $number++;
         }
@@ -119,7 +126,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
             $number++;
         }
@@ -128,7 +135,7 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
             $number++;
         }
@@ -139,20 +146,23 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
+            $number++;
             $content = "inv-".$color;
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
+            $number++;
             $content = "+2-".$color;
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
+            $number++;
             if($color == "r") $color="y"; else
             if($color == "y") $color="g"; else
             if($color == "g") $color = "b"; else
@@ -168,8 +178,9 @@ class Shuffler{
             do{
                 $order = rand(1,108);
             }while($this->checkOrder($order, $arr, $number) == false);
-            $card = new Card($stack->getId(), $number, $order,$content, "-");
+            $card = new Card($stack->getId(), $number, $order,$content, NULL);
             array_push($arr, $card);
+            $number++;
         }
         $this->store($arr);
     }
