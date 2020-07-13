@@ -4,8 +4,42 @@ class Shuffler{
     function __construct(){
 
     }
-    private function organizeCards(){
+    public function organizeCards($roomCode){
+        include("../../keys.php");
+        //connect and to get all players in the room
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        if (!$link) {
+            die('<strong>You were not able to connect to your database because ' . mysqli_error() . '</strong>');
+        }
+        $sql = "select * from player where roomCode='".$roomCode."'";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        mysqli_close($link);
 
+        //for each player do this
+        foreach($row as $arr){
+            for($y=0; $y<=6; $y++){
+                //retrieve the number of the next card in the stack from stack table
+                $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                $sql = "select * from stack where roomCode='".$roomCode."'";
+                $result1 = mysqli_query($link, $sql);
+                $row1 = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                mysqli_close($link);
+
+                //change the next card number attribute in stack table to the next number
+                $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                $d = $row1["nextCardNumber"] + 1;
+                $sql = "update stack set nextCardNumber=".$d." where roomCode='".$roomCode."'"; 
+                $res1 = mysqli_query($link,$sql); 
+                mysqli_close($link);
+                
+                //update each card with the id of the player who gets it
+                $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                $sql = "update card set id=".$arr["id"]." where roomCode='".$roomCode."' and order_in_stack='".$row1["nextCardNumber"]."'"; 
+                $res2 = mysqli_query($link,$sql); 
+                mysqli_close($link);
+            }
+        }
     }
     public function createStack($stack){
         include_once("../../phpconnect.php");
@@ -46,16 +80,15 @@ class Shuffler{
                 $req->bindValue(':order_in_stack',$array[$i]->getOrderInStack());
                 $req->bindValue(':content',$array[$i]->getContent());
                 $req->bindValue(':id', $array[$i]->getPlayerId());
-                echo $array[$i]->getStackId();
+                /*echo $array[$i]->getStackId();
                 echo $array[$i]->getNumber();
                 echo "|";
                 echo $array[$i]->getOrderInStack();
                 echo "|";
                 echo $array[$i]->getContent();
                 echo $array[$i]->getPlayerId();
-                echo "<br>";
+                echo "<br>";*/
                 $yo = $req->execute();
-                //var_dump( $yo);
             }
             catch (Exception $e){
                 echo 'Error: '.$e->getMessage();
