@@ -218,5 +218,34 @@ class Shuffler{
         }
         $this->store($arr);
     }
+    public function setCardOnTable($roomCode){
+        include("../../keys.php");
+        //retrieve the number of the next card in the stack from stack table
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from stack where roomCode='".$roomCode."'";
+        $result1 = mysqli_query($link, $sql);
+        $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
+        mysqli_close($link);
+
+        //etrieve the next card through the order_in_stack attribute
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from card where order_in_stack=".$row1["nextCardNumber"]." and stack_id='".$roomCode."'"; //in this case stack_id is the same as roomCode
+        $result2 = mysqli_query($link, $sql);
+        $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+        mysqli_close($link);
+
+        //change the next card number attribute in stack table to the next number and update the remaining cards number
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $d = $row1["nextCardNumber"] + 1;
+        $f = $row1["numberOfCardsRemaining"] - 1;
+        $sql = "update stack set nextCardNumber=".$d.", numberOfCardsRemaining=".$f." where roomCode='".$roomCode."'"; 
+        $res1 = mysqli_query($link,$sql); 
+        mysqli_close($link);
+
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "update room set cardOnTable='".$row2["content"]."' where roomCode='".$roomCode."'"; 
+        $res1 = mysqli_query($link,$sql); 
+        mysqli_close($link);
+    }
 }
 ?>
