@@ -23,19 +23,20 @@ class Shuffler{
                 $link = mysqli_connect($serverIp, $username, $pass, $dbName);
                 $sql = "select * from stack where roomCode='".$roomCode."'";
                 $result1 = mysqli_query($link, $sql);
-                $row1 = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
                 mysqli_close($link);
 
-                //change the next card number attribute in stack table to the next number
+                //change the next card number attribute in stack table to the next number and update the remaining cards number
                 $link = mysqli_connect($serverIp, $username, $pass, $dbName);
                 $d = $row1["nextCardNumber"] + 1;
-                $sql = "update stack set nextCardNumber=".$d." where roomCode='".$roomCode."'"; 
+                $f = $row1["numberOfCardsRemaining"] - 1;
+                $sql = "update stack set nextCardNumber=".$d.", numberOfCardsRemaining=".$f." where roomCode='".$roomCode."'"; 
                 $res1 = mysqli_query($link,$sql); 
                 mysqli_close($link);
                 
                 //update each card with the id of the player who gets it
                 $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-                $sql = "update card set id=".$arr["id"]." where roomCode='".$roomCode."' and order_in_stack='".$row1["nextCardNumber"]."'"; 
+                $sql = "update card set id='".$arr["id"]."' where stack_id='".$roomCode."' and order_in_stack='".$row1["nextCardNumber"]."'"; 
                 $res2 = mysqli_query($link,$sql); 
                 mysqli_close($link);
             }
