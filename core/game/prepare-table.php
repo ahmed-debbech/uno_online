@@ -7,5 +7,5 @@
     $shuf->shuffleCards($stack);
     $shuf->organizeCards($_GET["room-code"]);
     $shuf->setCardOnTable($_GET["room-code"]);
-    //header("Location: ../../game-play.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
+    header("Location: ../../game-play.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
 ?>

@@ -41,7 +41,16 @@ include_once("keys.php");
             </table>
             <table id="floor" border="3px">
                 <tr>
-                    <td></td>
+                    <td>
+                    <?php
+                        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                        $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
+                        $res = mysqli_query($link,$sql); 
+                        $list = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                        mysqli_close($link);
+                        echo $list["cardOnTable"];
+                    ?>
+                    </td>
                 </tr>
             </table>
             <h4>Click on a card to play</h4>
@@ -52,8 +61,19 @@ include_once("keys.php");
                     </td>
                     <td><table border="2px">
                         <tr> 
-                            <td>
-                            </td>
+                        <?php
+                            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                            $sql = "select * from card where stack_id='".$_GET["room-code"]."' and id='".$_GET["player-id"]."'";
+                            $res = mysqli_query($link,$sql); 
+                            $list = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                            mysqli_close($link);
+
+                            foreach($list as $row){
+                                echo "<td>";
+                                echo "<input type='button' value='".$row["content"]."'>";
+                                echo "</td>";
+                            }
+                        ?>
                         </tr>
                     </table></td>
                     <td>
