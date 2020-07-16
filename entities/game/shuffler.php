@@ -247,5 +247,42 @@ class Shuffler{
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
     }
+    public function setPlayDirection($roomCode){
+        include("../../keys.php");
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from player where roomCode='".$roomCode."'";
+        $result1 = mysqli_query($link, $sql);
+        $row1 = mysqli_fetch_all($result1, MYSQLI_NUM);
+        mysqli_close($link);
+        for($i=0; $i<=count($row1)-1; $i++){
+            $link1 = mysqli_connect($serverIp, $username, $pass, $dbName);
+            if($i<count($row1)-1){
+                $sql = "update player set nextPlayer='".$row1[$i+1][0]."' where roomCode='".$roomCode."' and id='".$row1[$i][0]."'"; 
+            }else{
+                $sql = "update player set nextPlayer='".$row1[0][0]."' where roomCode='".$roomCode."' and id='".$row1[$i][0]."'"; 
+            }
+            $res2 = mysqli_query($link1,$sql); 
+            mysqli_close($link1);
+        }
+    }
+    public function pickTheFirstTurn($roomCode){
+        include("../../keys.php");
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from player where roomCode='".$roomCode."'";
+        $result1 = mysqli_query($link, $sql);
+        $row1 = mysqli_fetch_all($result1, MYSQLI_ASSOC);
+        mysqli_close($link);
+        $array = array();
+        foreach($row1 as $r){
+            array_push($array, $r);
+        }
+        shuffle($array);
+        /* after we shuffle we get the first element in the array which is the first player that is going to play */
+
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "update room set playerTurn='".$array[0]["id"]."' where roomCode='".$roomCode."'"; 
+        $res1 = mysqli_query($link,$sql); 
+        mysqli_close($link);
+    }
 }
 ?>
