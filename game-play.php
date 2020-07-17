@@ -32,14 +32,48 @@ include_once("keys.php");
                         <table border="3px">
                             <tr>
                                 <?php
+                                function selection_sort(&$arr, $n)  
+                                { 
+                                    for($i = 0; $i < $n-1 ; $i++) 
+                                    { 
+                                        $low = $i; 
+                                        for($j = $i + 1; $j < $n ; $j++) 
+                                        { 
+                                            if ($arr[$j]["id"] == $arr[$low]["nextPlayer"]) 
+                                            { 
+                                                $low = $j; 
+                                            } 
+                                        } 
+                                        $tmp = $arr[$i+1]; 
+                                        $arr[$i+1] = $arr[$low]; 
+                                        $arr[$low] = $tmp; 
+                                    } 
+                                } 
                                 $link = mysqli_connect($serverIp, $username, $pass, $dbName);
                                 $sql = "select * from player where roomCode='".$_GET["room-code"]."'";
                                 $res = mysqli_query($link,$sql); 
                                 $list = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                 mysqli_close($link);
 
+                                //selection_sort($list, count($list));
+                                $ap = array();
+                                for($i=0; $i<count($list); $i++){
+                                    if($_SESSION["player_id"] == $list[$i]["id"]){
+                                        array_push($ap, $list[$i]);
+                                    }
+                                }
+                                for($i=0; $i<count($list); $i++){
+                                    for($j=0; $j<count($list); $j++){
+                                        if($ap[$i]["nextPlayer"] == $list[$j]["id"]){
+                                            if($ap[0]["id"] != $list[$j]["id"]){
+                                                array_push($ap, $list[$j]);
+                                            }
+                                        }
+                                    }
+                                }
+                                print_r($ap);
                                 foreach($list as $row){
-                                    if($row["name"] != $_SESSION["name"]){
+                                    if($row["id"] != $_SESSION["player_id"]){
                                         echo "<td>";
                                         echo $row["name"]." - Cards: ".$row["numCards"];
                                         echo "</td>";
