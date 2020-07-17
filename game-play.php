@@ -32,7 +32,7 @@ include_once("keys.php");
                         <table border="3px">
                             <tr>
                                 <?php
-                                function sort_for_dir($list)  { 
+                                function sort_for_dir($list){ 
                                     $ap = array();
                                     for($i=0; $i<count($list); $i++){
                                         if($_SESSION["player_id"] == $list[$i]["id"]){
@@ -58,11 +58,25 @@ include_once("keys.php");
 
                                 $ap = array();
                                 $ap = sort_for_dir($list);
-                                
+
+                                function getColor($id){
+                                    include("keys.php");
+                                    $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                                    $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
+                                    $res = mysqli_query($link,$sql); 
+                                    $list = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                                    mysqli_close($link);
+                                    if($id == $list[0]["playerTurn"]){
+                                        return "red";
+                                    }else{
+                                        return "black";
+                                    }
+                                }
+
                                 foreach($ap as $row){
                                     if($row["id"] != $_SESSION["player_id"]){
                                         echo "<td>";
-                                        echo $row["name"]." - Cards: ".$row["numCards"];
+                                        echo "<p style='color: ".getColor($row["id"]).";'>".$row["name"]." - Cards: ".$row["numCards"]."</p>";
                                         echo "</td>";
                                     }
                                 }
