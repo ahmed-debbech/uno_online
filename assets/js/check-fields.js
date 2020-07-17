@@ -36,6 +36,6 @@ function checkName(){
         alert("You must write your name!");
         return false;
     }else{
-    return true;
+        return true;
     }
 }

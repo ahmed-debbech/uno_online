@@ -7,14 +7,27 @@ include_once("keys.php");
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="assets/css/game-play-theme.css">
+        <script type="text/javascript" src="assets/js/game-play.js"></script>
     </head>
     <body>
         <center>
             <table id="players">
                 <tr>
                     <td>
-                        <h4>Room Code: <?php echo $_GET["room-code"]?></h4>
+                        <h4>Room: <?php echo $_GET["room-code"]?></h4>
                     </td>
+                    <td><input id="turn" type="hidden" value="<?php
+                    $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                    $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
+                    $res = mysqli_query($link,$sql); 
+                    $list = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                    mysqli_close($link);
+                    if($list["playerTurn"] == $_SESSION["player_id"]){
+                        echo "1";
+                    }else{
+                        echo "0";
+                    }
+                    ?>"></td>
                     <td>
                         <table border="3px">
                             <tr>
@@ -82,7 +95,9 @@ include_once("keys.php");
 
                             foreach($list as $row){
                                 echo "<td>";
-                                echo "<input type='button' value='".$row["content"]."'>";
+                                echo "<form action='core/game/play-card.php' method='post' onsubmit='event.preventDefault(); return is_turn();'>";
+                                echo "<input type='submit' name='card' value='".$row["content"]."'>";
+                                echo "</form>";
                                 echo "</td>";
                             }
                         ?>
