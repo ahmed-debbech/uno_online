@@ -8,6 +8,9 @@ include_once("keys.php");
     <head>
         <link rel="stylesheet" type="text/css" href="assets/css/game-play-theme.css">
         <script type="text/javascript" src="assets/js/game-play.js"></script>
+        <!--<script>
+        setTimeout(function(){window.location.reload(1);}, 2000);
+        </script>-->
     </head>
     <body>
         <center>
@@ -96,7 +99,7 @@ include_once("keys.php");
                         $res = mysqli_query($link,$sql); 
                         $list = mysqli_fetch_array($res, MYSQLI_ASSOC);
                         mysqli_close($link);
-                        echo $list["cardOnTable"];
+                        echo "<p id='cardOnTable'>".$list["cardOnTable"]."</p>";
                     ?>
                     </td>
                 </tr>
@@ -114,6 +117,7 @@ include_once("keys.php");
                 }
             ?>
             </h4>
+            <input type="hidden" id="content_card">
             <table>
                 <tr>
                     <td>
@@ -127,11 +131,11 @@ include_once("keys.php");
                             $res = mysqli_query($link,$sql); 
                             $list = mysqli_fetch_all($res, MYSQLI_ASSOC);
                             mysqli_close($link);
-
+                            
                             foreach($list as $row){
                                 echo "<td>";
-                                echo "<form action='core/game/play-card.php' method='post' onsubmit='event.preventDefault(); return is_turn();'>";
-                                echo "<input type='submit' name='card' value='".$row["content"]."'>";
+                                echo "<form action='core/game/play-card.php' method='post' onsubmit='return is_turn();'>";
+                                echo "<input type='button' onclick='document.getElementById(\'content_card\').value = ".$row["content"]."; this.form.submit();' name='card' value='".$row["content"]."'>";
                                 echo "</form>";
                                 echo "</td>";
                             }
