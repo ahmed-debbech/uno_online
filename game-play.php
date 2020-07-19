@@ -144,6 +144,9 @@ include_once("keys.php");
                             foreach($list as $row){
                                 echo "<td>";
                                 echo "<form action='core/game/play-card.php' method='post' onsubmit='return is_turn();'>";
+                                echo "<input type='hidden' name='room-code' value='".$_GET["room-code"]."'>";
+                                echo "<input type='hidden' name='card-content' value='".$row["content"]."'>";
+                                echo "<input type='hidden' name='player-id' value='".$_GET["player-id"]."'>";
                                 echo "<button style='background-color: ".setColors($row["content"])."; color: white;' type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>";
                                 echo "</form>";
                                 echo "</td>";
