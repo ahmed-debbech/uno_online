@@ -99,7 +99,17 @@ include_once("keys.php");
                         $res = mysqli_query($link,$sql); 
                         $list = mysqli_fetch_array($res, MYSQLI_ASSOC);
                         mysqli_close($link);
-                        echo "<p id='cardOnTable'>".$list["cardOnTable"]."</p>";
+                        function setColors($text){
+                            $colo = $text[strlen($text)-1];
+                            switch($colo){
+                                case 'r': return "#ff4747"; break;
+                                case 'g': return "#6fc763"; break;
+                                case 'b': return "#5496ff"; break;
+                                case 'y': return "#eddc1c"; break;
+                                default: return "grey"; break;
+                            }
+                        }
+                        echo "<p style='background-color: ".setColors($list["cardOnTable"])."; color: white;' id='cardOnTable'>".$list["cardOnTable"]."</p>";
                     ?>
                     </td>
                 </tr>
@@ -131,11 +141,10 @@ include_once("keys.php");
                             $res = mysqli_query($link,$sql); 
                             $list = mysqli_fetch_all($res, MYSQLI_ASSOC);
                             mysqli_close($link);
-                            
                             foreach($list as $row){
                                 echo "<td>";
-                                echo "<form  method='post' onsubmit='return is_turn();'>";
-                                echo "<button type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>";
+                                echo "<form action='core/game/play-card.php' method='post' onsubmit='return is_turn();'>";
+                                echo "<button style='background-color: ".setColors($row["content"])."; color: white;' type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>";
                                 echo "</form>";
                                 echo "</td>";
                             }
