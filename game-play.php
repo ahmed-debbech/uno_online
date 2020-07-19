@@ -117,7 +117,7 @@ include_once("keys.php");
                 }
             ?>
             </h4>
-            <input type="hidden" id="content_card">
+            <input type="hidden" id="content_card" value="">
             <table>
                 <tr>
                     <td>
@@ -135,7 +135,7 @@ include_once("keys.php");
                             foreach($list as $row){
                                 echo "<td>";
                                 echo "<form action='core/game/play-card.php' method='post' onsubmit='return is_turn();'>";
-                                echo "<input type='button' onclick='document.getElementById(\'content_card\').value = ".$row["content"]."; this.form.submit();' name='card' value='".$row["content"]."'>";
+                                echo "<button type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>";
                                 echo "</form>";
                                 echo "</td>";
                             }
