@@ -134,7 +134,7 @@ include_once("keys.php");
                             
                             foreach($list as $row){
                                 echo "<td>";
-                                echo "<form action='core/game/play-card.php' method='post' onsubmit='return is_turn();'>";
+                                echo "<form  method='post' onsubmit='return is_turn();'>";
                                 echo "<button type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>";
                                 echo "</form>";
                                 echo "</td>";
