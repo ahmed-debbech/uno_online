@@ -147,7 +147,7 @@ include_once("keys.php");
                                 echo "<input type='hidden' name='room-code' value='".$_GET["room-code"]."'>";
                                 echo "<input type='hidden' name='card-content' value='".$row["content"]."'>";
                                 echo "<input type='hidden' name='player-id' value='".$_GET["player-id"]."'>";
-                                echo "<button style='background-color: ".setColors($row["content"])."; color: white;' type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>";
+                                echo "<button name='card' style='background-color: ".setColors($row["content"])."; color: white;' type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>";
                                 echo "</form>";
                                 echo "</td>";
                             }
@@ -159,6 +159,45 @@ include_once("keys.php");
                     </td>
                 </tr>
             </table>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Pick a color</h2>
+                </div>
+                <div class="modal-body">
+                    <button name="pick" style="background-color: #ff4747; padding: 50px;"></button>
+                    <button name="pick" style="background-color: #6fc763; padding: 50px;"></button>
+                    <button name="pick" style="background-color: #5496ff; padding: 50px;"></button>
+                    <button name="pick" style="background-color: #eddc1c; padding: 50px;"></button>
+                    <button id="validate" style="">OK!</button>
+                </div>
+                </div>
+            </div>
         </center>
+        <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        // Get the button that opens the modal
+        var btn = document.getElementsByName('card');
+        var r;
+        for(var i=0; i<btn.length; i++){
+            if((btn[i].innerHTML == "+4") || (btn[i].innerHTML == "wc")){
+                btn[i].addEventListener("click", function(){modal.style.display = "block";})
+            }
+        }
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        validate.onclick = function() {
+        modal.style.display = "none";
+        }
+        </script>
     </body>
 </html>

@@ -1,3 +1,4 @@
+
 function is_with_hiphen(x){
     var i=0;
     do{
@@ -7,6 +8,9 @@ function is_with_hiphen(x){
         i++;
     }while(x.length > i);
     return false;
+}
+function selectColor(){
+
 }
 function is_correct_card(){
     var cardTable = document.getElementById("cardOnTable").textContent;
@@ -48,11 +52,16 @@ function is_correct_card(){
             i++;
         }while(cardPressed[i] < cardPressed.length);
     }
-    if(isCardPressedWithHiphen == true &&  isCardPressedWithHiphen == true){
+    if(isCardPressedWithHiphen == true &&  isCardOnTableWithHiphen == true){
         if((numPressed == numTable) || (colorPressed == colorTable)){
             return true;
         }
-    }   
+    }else{
+        if(isCardPressedWithHiphen == false &&  isCardOnTableWithHiphen == true){
+            selectColor();
+            return false;
+        }
+    }
     return false;
 }
 function is_turn(){
