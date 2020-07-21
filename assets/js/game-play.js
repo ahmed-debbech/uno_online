@@ -81,5 +81,10 @@ function is_turn(){
     return false;
 }
 function setCont(x){
-    document.getElementById("content_card").value = x;
+    if(x == "+4" || x == "wc"){
+        document.getElementById("con").value = x;
+    }else{
+        document.getElementById("content_card").value = x;
+    }
+    return false;
 }
