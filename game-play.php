@@ -143,7 +143,7 @@ include_once("keys.php");
                             mysqli_close($link);
                             foreach($list as $row){
                                 echo "<td>";
-                                echo "<form action='core/game/play-card.php' method='post' onsubmit='return is_turn();'>";
+                                echo "<form action='core/game/play-card.php' method='get' onsubmit='return is_turn();'>";
                                 echo "<input type='hidden' name='room-code' value='".$_GET["room-code"]."'>";
                                 echo "<input type='hidden' name='card-content' value='".$row["content"]."'>";
                                 echo "<input type='hidden' name='player-id' value='".$_GET["player-id"]."'>";
@@ -168,7 +168,7 @@ include_once("keys.php");
                     <h2>Pick a color</h2>
                 </div>
                 <div class="modal-body">
-                    <form action="core/game/play-card.php" method="post" >
+                    <form action="core/game/play-card.php" method="get" >
                         <input name="color" id="pickedColor" type="hidden" value="">
                         <input type='hidden' name='room-code' value="<?echo $_GET["room-code"]?>">
                         <input type='hidden' id="con" name='card-content' value="">
