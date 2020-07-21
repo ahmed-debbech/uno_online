@@ -66,6 +66,7 @@ function is_correct_card(){
 function is_turn(){
     var val = document.getElementById('content_card').value;
     if(val == "+4" || val == "wc"){
+        document.getElementById("con").value = val;
         return false;
     }
     var x = document.getElementById("turn").value;
@@ -81,10 +82,5 @@ function is_turn(){
     return false;
 }
 function setCont(x){
-    if(x == "+4" || x == "wc"){
-        document.getElementById("con").value = x;
-    }else{
-        document.getElementById("content_card").value = x;
-    }
-    return false;
+    document.getElementById("content_card").value = x;
 }
