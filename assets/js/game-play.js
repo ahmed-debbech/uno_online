@@ -58,13 +58,16 @@ function is_correct_card(){
         }
     }else{
         if(isCardPressedWithHiphen == false &&  isCardOnTableWithHiphen == true){
-            selectColor();
-            return false;
+            return true;
         }
     }
     return false;
 }
 function is_turn(){
+    var val = document.getElementById('content_card').value;
+    if(val == "+4" || val == "wc"){
+        return false;
+    }
     var x = document.getElementById("turn").value;
     if(x == 1){
         if(is_correct_card() == true){
