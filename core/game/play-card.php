@@ -15,7 +15,7 @@ if(isset($_GET["room-code"]) && isset($_GET["player-id"]) && isset($_GET["card-c
         die("400 Bad Request");
     }
 
-    //test on card existance for given player
+    //test on card existance for given player with its card and its room
     $link = mysqli_connect($serverIp, $username, $pass, $dbName);
     $sql = "select * from card where id='".$_GET["player-id"]."' and stack_id='".$_GET["room-code"]."' and content='".$_GET["card-content"]."'";
     $res = mysqli_query($link,$sql); 
@@ -33,4 +33,6 @@ if(isset($_GET["color"]) && (!empty($_GET["color"]))){
 }else{
     $ch = new CardHandler($_GET["room-code"], $_GET["player-id"], $_GET["card-content"]);
 }
+
+$ch->isCompatible($_GET["room-code"]);
 ?>

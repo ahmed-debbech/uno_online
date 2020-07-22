@@ -64,13 +64,13 @@ function is_correct_card(){
     return false;
 }
 function is_turn(){
-    var val = document.getElementById('content_card').value;
-    if(val == "+4" || val == "wc"){
-        document.getElementById("con").value = val;
-        return false;
-    }
     var x = document.getElementById("turn").value;
     if(x == 1){
+        var val = document.getElementById('content_card').value;
+        if(val == "+4" || val == "wc"){
+            document.getElementById("con").value = val;
+            return false;
+        }
         if(is_correct_card() == true){
             return true;
         }else{

@@ -218,6 +218,13 @@ class Shuffler{
         }
         $this->store($arr);
     }
+    private function getColor($d){
+        $color = $d[strlen($d)-1];
+        if($color != 'g' && $color != 'b' && $color != 'r' && $color != 'y'){
+            return NULL;
+        }
+        return $color;
+    }
     public function setCardOnTable($roomCode){
         include("../../keys.php");
         //retrieve the number of the next card in the stack from stack table
@@ -243,7 +250,7 @@ class Shuffler{
         mysqli_close($link);
 
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-        $sql = "update room set cardOnTable='".$row2["content"]."' where roomCode='".$roomCode."'"; 
+        $sql = "update room set cardOnTable='".$row2["content"]."', color='".$this->getColor($row2["content"])."' where roomCode='".$roomCode."'"; 
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
     }
