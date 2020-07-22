@@ -109,7 +109,16 @@ include_once("keys.php");
                                 default: return "grey"; break;
                             }
                         }
-                        echo "<p style='background-color: ".setColors($list["cardOnTable"])."; color: white;' id='cardOnTable'>".$list["cardOnTable"]."</p>";
+                        function __setColors($text){
+                            switch($text){
+                                case 'r': return "#ff4747"; break;
+                                case 'g': return "#6fc763"; break;
+                                case 'b': return "#5496ff"; break;
+                                case 'y': return "#eddc1c"; break;
+                                default: return "grey"; break;
+                            }
+                        }
+                        echo "<p style='background-color: ".__setColors($list["color"])."; color: white;' id='cardOnTable'>".$list["cardOnTable"]."</p>";
                     ?>
                     </td>
                 </tr>
