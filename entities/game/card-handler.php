@@ -42,7 +42,7 @@ class CardHandler{
                 $i=0; $buff2 = "";
 
                 do{ 
-                    $buff .= $list["cardOnTable"][$i];
+                    $buff2 .= $list["cardOnTable"][$i];
                     $i++;
                 }while($list["cardOnTable"][$i]!= "-");
                 if($buff == $buff2){
