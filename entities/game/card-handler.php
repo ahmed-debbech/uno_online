@@ -27,12 +27,30 @@ class CardHandler{
         mysqli_close($link);
 
         if($list["cardOnTable"] == "+4" || $list["cardOnTable"] == "wc"){
-            echo "ff";
             if($list["color"] == $this->cardContent[strlen($this->cardContent)-1]){
-                echo "wild";
+                return true;
+            }
+        }else{
+            if($list["color"] == $this->cardContent[strlen($this->cardContent)-1]){
+                return true;
+            }else{
+                $i=0; $buff = "";
+                do{ 
+                    $buff .= $this->cardContent[$i];
+                    $i++;
+                }while($this->cardContent[$i] != "-");
+                $i=0; $buff2 = "";
+
+                do{ 
+                    $buff .= $list["cardOnTable"][$i];
+                    $i++;
+                }while($list["cardOnTable"][$i]!= "-");
+                if($buff == $buff2){
+                    return true;
+                }
             }
         }
-        echo "none";
+        return false;
     }
 }
 ?>
