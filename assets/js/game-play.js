@@ -9,16 +9,23 @@ function is_with_hiphen(x){
     }while(x.length > i);
     return false;
 }
-function selectColor(){
-
+function selectColor(color){
+    switch(color){
+        case "rgb(255, 71, 71)": return 'r'; break;
+        case "rgb(111, 199, 99)": return 'g'; break;
+        case "rgb(84, 150, 255)": return 'b'; break;
+        case "rgb(237, 220, 28)": return 'y'; break;
+        default: return "grey"; break;
+    }
 }
 function is_correct_card(){
     var cardTable = document.getElementById("cardOnTable").textContent;
     var cardPressed = document.getElementById("content_card").value;
     var numTable= "";
-    var colorTable = "";
     var numPressed = "";
     var colorPressed = "";
+    var col = document.getElementById("cardOnTable").style.backgroundColor;
+    var colorTable = selectColor(col);
     var isCardOnTableWithHiphen = is_with_hiphen(cardTable); //with '-'
     var isCardPressedWithHiphen  = is_with_hiphen(cardPressed); //with'-'
     var i=0;
@@ -28,14 +35,8 @@ function is_correct_card(){
             numTable = numTable + cardTable[i];
             i++;
         }while(cardTable[i] != "-");
-        i++;
-        colorTable = cardTable[i];
     }else{
-        i=0;
-        do{
-            numTable = numTable + cardTable[i];
-            i++;
-        }while(cardTable[i] < cardTable.length);
+        numTable = cardTable;
     }
     if(isCardPressedWithHiphen == true){
         i=0;
@@ -46,19 +47,21 @@ function is_correct_card(){
         i++;
         colorPressed = cardPressed[i];
     }else{
-        i=0;
-        do{
-            numPressed = numPressed + cardPressed[i];
-            i++;
-        }while(cardPressed[i] < cardPressed.length);
+        numPressed = cardPressed;
     }
     if(isCardPressedWithHiphen == true &&  isCardOnTableWithHiphen == true){
         if((numPressed == numTable) || (colorPressed == colorTable)){
             return true;
         }
     }else{
-        if(isCardPressedWithHiphen == false &&  isCardOnTableWithHiphen == true){
+        if(isCardPressedWithHiphen == false){
             return true;
+        }else{
+            if(isCardOnTableWithHiphen == false){
+                if(colorPressed == colorTable){
+                    return true;
+                }
+            }
         }
     }
     return false;
