@@ -4,11 +4,13 @@ class CardHandler{
     private $playerId;
     private $cardContent;
     private $color;
+    private $cardNum;
 
-    function __construct($room, $player, $card){
+    function __construct($room, $player, $card, $num){
         $this->roomCode = $room;
         $this->playerId = $player;
         $this->cardContent = $card;
+        $this->cardNum = $num;
         $this->color = "none";
     }   
     public function setColor($color){
@@ -60,6 +62,41 @@ class CardHandler{
         }else{
             $sql = "update room set cardOnTable='".$this->cardContent."', color='".$this->color."' where roomCode='".$this->roomCode."'"; 
         }
+        $res1 = mysqli_query($link,$sql); 
+        mysqli_close($link);
+    }
+    public function managePlayerCards(){
+        include("../../keys.php");
+        //get the number of remaining cards in hand of the player 
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from player where id='".$this->playerId."'";
+        $res = mysqli_query($link,$sql); 
+        $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+        mysqli_close($link);
+
+        //decrement the number of cards in hand
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $num = $row["numCards"]-1;
+        $sql = "update player set numCards=".$num.", color='".$this->color."' where roomCode='".$this->roomCode."'"; 
+        $res1 = mysqli_query($link,$sql); 
+        mysqli_close($link);
+
+        //remove of the card assignment to the player 
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "update card set id=NULL where number=".$this->cardNum." and stack_id='".$this->roomCode."'"; 
+        $res1 = mysqli_query($link,$sql); 
+        mysqli_close($link);
+    }
+    public function passTurn(){
+        include("../../keys.php");
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from player where id='".$this->playerId."'";
+        $res = mysqli_query($link,$sql); 
+        $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+        mysqli_close($link);
+
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "update room set playerTurn='".$row["nextPlayer"]."' where roomCode='".$this->roomCode."'"; 
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
     }

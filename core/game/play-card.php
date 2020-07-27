@@ -26,16 +26,26 @@ if(isset($_GET["room-code"]) && isset($_GET["player-id"]) && isset($_GET["card-c
 }else{
     die("400 Bad Request");
 }
+$link = mysqli_connect($serverIp, $username, $pass, $dbName);
+$sql = "select * from card where id='".$_GET["player-id"]."' and stack_id='".$_GET["room-code"]."' and content='".$_GET["card-content"]."'";
+$res = mysqli_query($link,$sql); 
+$row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+mysqli_close($link);
 
 if(isset($_GET["color"]) && (!empty($_GET["color"]))){
-    $ch = new CardHandler($_GET["room-code"], $_GET["player-id"], $_GET["card-content"]);
+    $ch = new CardHandler($_GET["room-code"], $_GET["player-id"], $_GET["card-content"], $row["number"]);
     $ch->setColor($_GET["color"]);
 }else{
-    $ch = new CardHandler($_GET["room-code"], $_GET["player-id"], $_GET["card-content"]);
+    $ch = new CardHandler($_GET["room-code"], $_GET["player-id"], $_GET["card-content"], $row["number"]);
 }
 
 if($ch->isCompatible()){
         $ch->updateCardOnTable();
+        $ch->managePlayerCards();
+        $ch->passTurn();
+        /*if($ch->isActionCard()){
+
+        }*/
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);
     echo "wrong card played! please go back to the previous page.";
