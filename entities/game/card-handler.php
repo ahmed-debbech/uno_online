@@ -14,14 +14,14 @@ class CardHandler{
     public function setColor($color){
         $this->color = $color;
     }
-    public function isCompatible($roomCode){
+    public function isCompatible(){
         include("../../keys.php");
         if($this->cardContent == "+4" || $this->cardContent == "wc"){
             return true;
         }
 
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-        $sql = "select * from room where roomCode='".$roomCode."'";
+        $sql = "select * from room where roomCode='".$this->roomCode."'";
         $res = mysqli_query($link,$sql); 
         $list = mysqli_fetch_array($res, MYSQLI_ASSOC);
         mysqli_close($link);
@@ -51,6 +51,17 @@ class CardHandler{
             }
         }
         return false;
+    }
+    public function updateCardOnTable(){
+        include("../../keys.php");
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        if($this->color == "none"){
+            $sql = "update room set cardOnTable='".$this->cardContent."' , color='".$this->cardContent[strlen($this->cardContent)-1]."' where roomCode='".$this->roomCode."'";
+        }else{
+            $sql = "update room set cardOnTable='".$this->cardContent."', color='".$this->color."' where roomCode='".$this->roomCode."'"; 
+        }
+        $res1 = mysqli_query($link,$sql); 
+        mysqli_close($link);
     }
 }
 ?>

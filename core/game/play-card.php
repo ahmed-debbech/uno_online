@@ -34,10 +34,10 @@ if(isset($_GET["color"]) && (!empty($_GET["color"]))){
     $ch = new CardHandler($_GET["room-code"], $_GET["player-id"], $_GET["card-content"]);
 }
 
-if($ch->isCompatible($_GET["room-code"])){
-    
+if($ch->isCompatible()){
+        $ch->updateCardOnTable();
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);
-    echo "wrong card player! please go back to the previous page.";
+    echo "wrong card played! please go back to the previous page.";
 }
 ?>
