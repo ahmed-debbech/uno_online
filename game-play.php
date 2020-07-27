@@ -182,10 +182,10 @@ include_once("keys.php");
                         <input type='hidden' name='room-code' value="<?echo $_GET["room-code"]?>">
                         <input type='hidden' id="con" name='card-content' value="">
                         <input type='hidden' name='player-id' value="<?echo $_GET["player-id"]?>">
-                        <button type="submit"  onclick="document.getElementById('pickedColor').value = 'red';" style="background-color: #ff4747; padding: 50px;"></button>
-                        <button type="submit" onclick="document.getElementById('pickedColor').value = 'green';" style="background-color: #6fc763; padding: 50px;"></button>
-                        <button type="submit" onclick="document.getElementById('pickedColor').value = 'blue';" style="background-color: #5496ff; padding: 50px;"></button>
-                        <button type="submit"  onclick="document.getElementById('pickedColor').value = 'yellow';" style="background-color: #eddc1c; padding: 50px;"></button>
+                        <button type="submit"  onclick="document.getElementById('pickedColor').value = 'r';" style="background-color: #ff4747; padding: 50px;"></button>
+                        <button type="submit" onclick="document.getElementById('pickedColor').value = 'g';" style="background-color: #6fc763; padding: 50px;"></button>
+                        <button type="submit" onclick="document.getElementById('pickedColor').value = 'b';" style="background-color: #5496ff; padding: 50px;"></button>
+                        <button type="submit"  onclick="document.getElementById('pickedColor').value = 'y';" style="background-color: #eddc1c; padding: 50px;"></button>
                         <button id="validate" style="">OK!</button>
                     </form>
                 </div>
