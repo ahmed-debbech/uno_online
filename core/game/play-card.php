@@ -1,6 +1,7 @@
 <?php
 include_once("../../keys.php");
 include_once("../../entities/game/card-handler.php");
+include_once("../../entities/game/action-card.php");
 
 //test on room existance
 if(isset($_GET["room-code"]) && isset($_GET["player-id"]) && isset($_GET["card-content"])){
@@ -40,12 +41,18 @@ if(isset($_GET["color"]) && (!empty($_GET["color"]))){
 }
 
 if($ch->isCompatible()){
-        $ch->updateCardOnTable();
-        $ch->managePlayerCards();
+        //$ch->updateCardOnTable();
+        //$ch->managePlayerCards();
         if($ch->isActionCard() == false){
-            $ch->passTurn();
+            //$ch->passTurn();
         }else{
-            
+            if(isset($_GET["color"]) && (!empty($_GET["color"]))){
+                $ac = new ActionCard($_GET["room-code"], $_GET["player-id"], $_GET["card-content"], $row["number"]);
+                $ac->setColor($_GET["color"]);
+            }else{
+                $ac = new ActionCard($_GET["room-code"], $_GET["player-id"], $_GET["card-content"], $row["number"]);
+            }
+            $ac->applyActionCard();
         }
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);

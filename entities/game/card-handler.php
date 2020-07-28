@@ -1,10 +1,10 @@
 <?php
 class CardHandler{
-    private $roomCode;
-    private $playerId;
-    private $cardContent;
-    private $color;
-    private $cardNum;
+    protected $roomCode;
+    protected $playerId;
+    protected $cardContent;
+    protected $color;
+    protected $cardNum;
 
     function __construct($room, $player, $card, $num){
         $this->roomCode = $room;
