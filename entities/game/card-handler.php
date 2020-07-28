@@ -100,5 +100,27 @@ class CardHandler{
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
     }
+    public function isActionCard(){
+        function startsWith ($string, $startString){ 
+            $len = strlen($startString); 
+            return (substr($string, 0, $len) === $startString); 
+        } 
+        if(startsWith($this->cardContent, "+2") === true){
+            return true;
+        }else{
+            if(startsWith($this->cardContent, "+4") === true){
+                return true;
+            }else{
+                if(startsWith($this->cardContent, "blo") === true){
+                    return true;
+                }else{
+                    if(startsWith($this->cardContent, "inv") === true){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 }
 ?>

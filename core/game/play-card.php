@@ -42,10 +42,11 @@ if(isset($_GET["color"]) && (!empty($_GET["color"]))){
 if($ch->isCompatible()){
         $ch->updateCardOnTable();
         $ch->managePlayerCards();
-        $ch->passTurn();
-        /*if($ch->isActionCard()){
-
-        }*/
+        if($ch->isActionCard() == false){
+            $ch->passTurn();
+        }else{
+            
+        }
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);
     echo "wrong card played! please go back to the previous page.";
