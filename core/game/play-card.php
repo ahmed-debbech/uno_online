@@ -52,7 +52,9 @@ if($ch->isCompatible()){
             }else{
                 $ac = new ActionCard($_GET["room-code"], $_GET["player-id"], $_GET["card-content"], $row["number"]);
             }
+            echo "ddd";
             $ac->applyActionCard();
+            echo "after action";
         }
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);
