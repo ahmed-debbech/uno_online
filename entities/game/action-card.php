@@ -108,7 +108,21 @@ class ActionCard extends CardHandler{
         mysqli_close($link);
     }
     private function inverse(){
+        include("../../keys.php");
+        //get the number of players
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from room where roomCode='".$this->roomCode."'";
+        $res = mysqli_query($link,$sql); 
+        $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+        mysqli_close($link);
+        $numofpl = 4 - $row["numberOfPlayersRemaining"];
+        if($numofpl == 2){
 
+        }else{
+            for($i=1; $i<=$numofpl; $i++){
+                
+            }
+        }
     }
     public function applyActionCard(){
         if($this->whichOne() == "+2"){

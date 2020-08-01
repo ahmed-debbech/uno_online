@@ -264,9 +264,13 @@ class Shuffler{
         for($i=0; $i<=count($row1)-1; $i++){
             $link1 = mysqli_connect($serverIp, $username, $pass, $dbName);
             if($i<count($row1)-1){
-                $sql = "update player set nextPlayer='".$row1[$i+1][0]."' where roomCode='".$roomCode."' and id='".$row1[$i][0]."'"; 
+                if($i == 0){
+                    $sql = "update player set previousPlayer='".$row1[count($row1)-1][0]."' , nextPlayer='".$row1[$i+1][0]."' where roomCode='".$roomCode."' and id='".$row1[$i][0]."'"; 
+                }else{
+                    $sql = "update player set previousPlayer='".$row1[$i-1][0]."' , nextPlayer='".$row1[$i+1][0]."' where roomCode='".$roomCode."' and id='".$row1[$i][0]."'"; 
+                }
             }else{
-                $sql = "update player set nextPlayer='".$row1[0][0]."' where roomCode='".$roomCode."' and id='".$row1[$i][0]."'"; 
+                $sql = "update player set previousPlayer='".$row1[$i-1][0]."' , nextPlayer='".$row1[0][0]."' where roomCode='".$roomCode."' and id='".$row1[$i][0]."'"; 
             }
             $res2 = mysqli_query($link1,$sql); 
             mysqli_close($link1);
