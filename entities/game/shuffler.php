@@ -256,6 +256,13 @@ class Shuffler{
     }
     public function setPlayDirection($roomCode){
         include("../../keys.php");
+        //set direction flag in room table
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "update room set direction=1 where roomCode='".$roomCode."'";
+        $result1 = mysqli_query($link, $sql);
+        $row1 = mysqli_fetch_all($result1, MYSQLI_NUM);
+        mysqli_close($link);
+
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select * from player where roomCode='".$roomCode."'";
         $result1 = mysqli_query($link, $sql);

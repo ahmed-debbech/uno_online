@@ -41,10 +41,10 @@ if(isset($_GET["color"]) && (!empty($_GET["color"]))){
 }
 
 if($ch->isCompatible()){
-        //$ch->updateCardOnTable();
-        //$ch->managePlayerCards();
+        $ch->updateCardOnTable();
+        $ch->managePlayerCards();
         if($ch->isActionCard() == false){
-            //$ch->passTurn();
+            $ch->passTurn();
         }else{
             if(isset($_GET["color"]) && (!empty($_GET["color"]))){
                 $ac = new ActionCard($_GET["room-code"], $_GET["player-id"], $_GET["card-content"], $row["number"]);

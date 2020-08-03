@@ -29,7 +29,7 @@ class CardHandler{
         mysqli_close($link);
 
         if($list["cardOnTable"] == "+4" || $list["cardOnTable"] == "wc"){
-            if($list["color"] == $this->cardContent[strlen($this->cardContent)-1]){
+            if($list["color"] == $this->cardContent[strlen($this->cardContent)-1] || $list["color"] == NULL){
                 return true;
             }
         }else{
@@ -96,7 +96,17 @@ class CardHandler{
         mysqli_close($link);
 
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-        $sql = "update room set playerTurn='".$row["nextPlayer"]."' where roomCode='".$this->roomCode."'"; 
+        $sql = "select * from room where roomCode='".$this->roomCode."'";
+        $res = mysqli_query($link,$sql); 
+        $row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
+        mysqli_close($link);
+
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        if($row1["direction"] == 1){
+            $sql = "update room set playerTurn='".$row["nextPlayer"]."' where roomCode='".$this->roomCode."'"; 
+        }else{
+            $sql = "update room set playerTurn='".$row["previousPlayer"]."' where roomCode='".$this->roomCode."'"; 
+        }
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
     }

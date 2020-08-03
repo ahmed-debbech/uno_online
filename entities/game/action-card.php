@@ -109,19 +109,39 @@ class ActionCard extends CardHandler{
     }
     private function inverse(){
         include("../../keys.php");
-        //get the number of players
+        //get the direction flag
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select * from room where roomCode='".$this->roomCode."'";
         $res = mysqli_query($link,$sql); 
         $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
         mysqli_close($link);
-        $numofpl = 4 - $row["numberOfPlayersRemaining"];
-        if($numofpl == 2){
+        
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from player where id='".$this->playerId."'";
+        $res = mysqli_query($link,$sql); 
+        $row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
+        mysqli_close($link);
 
+        if($row["direction"] == 1){
+            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+            $sql = "update room set direction=0 where roomCode='".$this->roomCode."'"; 
+            $res1 = mysqli_query($link,$sql); 
+            mysqli_close($link);
+
+            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+            $sql = "update room set playerTurn='".$row1["previousPlayer"]."' where roomCode='".$this->roomCode."'"; 
+            $res1 = mysqli_query($link,$sql); 
+            mysqli_close($link);
         }else{
-            for($i=1; $i<=$numofpl; $i++){
-                
-            }
+            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+            $sql = "update room set direction=1 where roomCode='".$this->roomCode."'"; 
+            $res1 = mysqli_query($link,$sql); 
+            mysqli_close($link);
+
+            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+            $sql = "update room set playerTurn='".$row1["nextPlayer"]."' where roomCode='".$this->roomCode."'"; 
+            $res1 = mysqli_query($link,$sql); 
+            mysqli_close($link);
         }
     }
     public function applyActionCard(){

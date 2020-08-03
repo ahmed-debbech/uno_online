@@ -58,7 +58,7 @@ function is_correct_card(){
             return true;
         }else{
             if(isCardOnTableWithHiphen == false){
-                if(colorPressed == colorTable){
+                if(colorPressed == colorTable || colorTable == "grey"){
                     return true;
                 }
             }
