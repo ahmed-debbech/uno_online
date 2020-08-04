@@ -140,7 +140,11 @@ include_once("keys.php");
             <table>
                 <tr>
                     <td>
-                        <input type="button" value="Stack">
+                    <form method="post" action="core/game/get_from_Stack.php">
+                        <input name="roomCode" type="hidden" value="<?php echo $_GET["room-code"]; ?>">
+                        <input name="player-id" type="hidden" value="<?php echo $_SESSION["player_id"]; ?>">
+                        <input type="submit" value="Stack">
+                    </form>
                     </td>
                     <td><table border="2px">
                         <tr> 
