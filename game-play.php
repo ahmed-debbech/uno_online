@@ -8,9 +8,9 @@ include_once("keys.php");
     <head>
         <link rel="stylesheet" type="text/css" href="assets/css/game-play-theme.css">
         <script type="text/javascript" src="assets/js/game-play.js"></script>
-        <!--<script>
+        <script>
         setTimeout(function(){window.location.reload(1);}, 2000);
-        </script>-->
+        </script>
     </head>
     <body>
         <center>

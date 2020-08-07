@@ -54,6 +54,7 @@ if($ch->isCompatible()){
             }
             $ac->applyActionCard();
         }
+        header("Location: ".$_SERVER['HTTP_REFERER']);
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);
     echo "wrong card played! please go back to the previous page.";
