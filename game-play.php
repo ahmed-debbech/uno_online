@@ -145,6 +145,20 @@ include_once("keys.php");
                         <input name="player-id" type="hidden" value="<?php echo $_SESSION["player_id"]; ?>">
                         <input type="submit" value="Stack">
                     </form>
+                    <?php
+                    $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                    $sql = "select stackUsed from player where id='".$_SESSION["player_id"]."'";
+                    $res = mysqli_query($link,$sql); 
+                    $row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                    mysqli_close($link);
+                    if($row1["stackUsed"] == 1){
+                        echo'<form method="post" action="core/game/passPressed.php">
+                        <input name="roomCode" type="hidden" value="'.$_GET["room-code"].'">
+                        <input name="player-id" type="hidden" value="'.$_SESSION["player_id"].'">
+                        <input type="submit" value="Pass">
+                        </form>';
+                    }
+                    ?>
                     </td>
                     <td><table border="2px">
                         <tr> 

@@ -54,6 +54,11 @@ if($ch->isCompatible()){
             }
             $ac->applyActionCard();
         }
+        //set stackUsed flag to no
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "update player set stackUsed=0 where id='".$_GET["player-id"]."'"; 
+        $res1 = mysqli_query($link,$sql); 
+        mysqli_close($link);
         header("Location: ".$_SERVER['HTTP_REFERER']);
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);
