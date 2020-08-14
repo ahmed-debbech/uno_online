@@ -140,7 +140,7 @@ include_once("keys.php");
             <table>
                 <tr>
                     <td>
-                    <form method="post" action="core/game/get_from_Stack.php">
+                    <form method="post" action="core/game/get_from_Stack.php" onsubmit='return is_turn();'>
                         <input name="roomCode" type="hidden" value="<?php echo $_GET["room-code"]; ?>">
                         <input name="player-id" type="hidden" value="<?php echo $_SESSION["player_id"]; ?>">
                         <input type="submit" value="Stack">
@@ -204,7 +204,6 @@ include_once("keys.php");
                         <button type="submit" onclick="document.getElementById('pickedColor').value = 'g';" style="background-color: #6fc763; padding: 50px;"></button>
                         <button type="submit" onclick="document.getElementById('pickedColor').value = 'b';" style="background-color: #5496ff; padding: 50px;"></button>
                         <button type="submit"  onclick="document.getElementById('pickedColor').value = 'y';" style="background-color: #eddc1c; padding: 50px;"></button>
-                        <button id="validate" style="">OK!</button>
                     </form>
                 </div>
                 </div>
