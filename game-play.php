@@ -13,6 +13,7 @@ include_once("keys.php");
         </script>
     </head>
     <body>
+       
         <center>
             <table id="players">
                 <tr>
@@ -231,5 +232,6 @@ include_once("keys.php");
         modal.style.display = "none";
         }
         </script>
+    <footer>Version: v0.1</footer>
     </body>
 </html>

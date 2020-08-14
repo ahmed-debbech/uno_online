@@ -4,9 +4,11 @@ class Room {
     private $roomCode;
     private $numberOfPlayersRemaining;
     private $isStarted;
+    private $isEnded;
     private $cardOnTable; // '-' means none
     function __construct($code, $initialPlayer, $cardOnTable){
         $this->isStarted = 0;
+        $this->isEnded = 0;
         $this->numberOfPlayersRemaining = 3;
         $this->roomCode = $code;    
         $this->cardOnTable=$cardOnTable;
@@ -25,7 +27,7 @@ class Room {
     }
     public function addRoomToDB(){
         include ("../phpconnect.php");
-        $sql="insert into room (roomCode,numberOfPlayersRemaining,isStarted,cardOnTable) values (:roomCode,:numberOfPlayersRemaining,:isStarted,:cot)";
+        $sql="insert into room (roomCode,numberOfPlayersRemaining,isStarted,cardOnTable,isEnded) values (:roomCode,:numberOfPlayersRemaining,:isStarted,:cot,:isEnded)";
         $db = Connector::getConnexion();
         try{
             $req=$db->prepare($sql);
@@ -33,6 +35,7 @@ class Room {
             $req->bindValue(':numberOfPlayersRemaining',$this->numberOfPlayersRemaining);
             $req->bindValue(':isStarted',$this->isStarted);
             $req->bindValue(":cot", $this->cardOnTable);
+            $req->bindValue(":isEnded", $this->isEnded);
             $yo = $req->execute();
         }
         catch (Exception $e){
@@ -44,6 +47,12 @@ class Room {
     }
     public function isStarted(){
         return $this->isStarted;
+    }
+    public function isEnded(){
+        return $this->isEnded;
+    }
+    public function setEnded(){
+        $this->isEnded = 1;
     }
 }
 ?>

@@ -59,7 +59,20 @@ if($ch->isCompatible()){
         $sql = "update player set stackUsed=0 where id='".$_GET["player-id"]."'"; 
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
-        header("Location: ".$_SERVER['HTTP_REFERER']);
+        //check if player finished all cards
+        $con = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select count(*) as 'cout' from card where id='".$_GET["player-id"]."' and stack_id='".$_GET["room-code"]."'";
+        $result = mysqli_query($con, $sql);
+        $list = mysqli_fetch_array($result,MYSQLI_NUM);
+        if($list[0] == 0){
+            //set isEnded flag after the game is finished
+            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+            $sql = "update room set isEnded=1 where roomCode='".$_GET["room-code"]."'"; 
+            $res1 = mysqli_query($link,$sql); 
+            mysqli_close($link);
+           header("Location: ../../you_won.php");
+        }
+        //header("Location: ".$_SERVER['HTTP_REFERER']);
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);
     echo "wrong card played! please go back to the previous page.";
