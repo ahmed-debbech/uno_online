@@ -71,8 +71,9 @@ if($ch->isCompatible()){
             $res1 = mysqli_query($link,$sql); 
             mysqli_close($link);
            header("Location: ../../you_won.php");
+        }else{
+            header("Location: ".$_SERVER['HTTP_REFERER']);
         }
-        //header("Location: ".$_SERVER['HTTP_REFERER']);
 }else{
     //header("Location: ".$_SERVER['HTTP_REFERER']);
     echo "wrong card played! please go back to the previous page.";
