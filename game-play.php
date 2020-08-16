@@ -1,4 +1,17 @@
 <?php 
+//check if the game is ended 
+include_once("keys.php");
+$link = mysqli_connect($serverIp, $username, $pass, $dbName);
+$sql = "select isEnded from room where roomCode='".$_GET["room-code"]."'";
+$res = mysqli_query($link,$sql); 
+$row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+if($row["isEnded"] == 1){
+    header("Location: you_lost.php?room-code=".$_GET["room-code"]);
+    exit();
+}
+mysqli_close($link);
+
+//else show the page
 session_start();
 include("entities/player.php");
 include("entities/room.php");
