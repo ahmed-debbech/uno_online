@@ -198,6 +198,16 @@ include_once("keys.php");
                     <td>
                         You
                     </td>
+                    <?php
+                    //check the number of cards if it is 2
+                    $con = mysqli_connect($serverIp, $username, $pass, $dbName);
+                    $sql = "select count(*) as 'cout' from card where id='".$_GET["player-id"]."' and stack_id='".$_GET["room-code"]."'";
+                    $result = mysqli_query($con, $sql);
+                    $list = mysqli_fetch_array($result,MYSQLI_NUM);
+                    if($list[0] == 2){
+                        echo "<td><button onclick=\"location.href='core/game/uno_pressed.php?player-id=".$_GET["player-id"]."'\">UNO!</button></td>";
+                    }
+                    ?>
                 </tr>
             </table>
             <!-- The Modal -->

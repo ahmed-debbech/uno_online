@@ -64,13 +64,20 @@ if($ch->isCompatible()){
         $sql = "select count(*) as 'cout' from card where id='".$_GET["player-id"]."' and stack_id='".$_GET["room-code"]."'";
         $result = mysqli_query($con, $sql);
         $list = mysqli_fetch_array($result,MYSQLI_NUM);
+        if($list[0] >= 2){
+            //set unoPressed flag to yes
+            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+            $sql = "update player set unoPressed=0 where id='".$_GET["player-id"]."'"; 
+            $res1 = mysqli_query($link,$sql); 
+            mysqli_close($link);
+        }
         if($list[0] == 0){
             //set isEnded flag after the game is finished
             $link = mysqli_connect($serverIp, $username, $pass, $dbName);
             $sql = "update room set isEnded=1 where roomCode='".$_GET["room-code"]."'"; 
             $res1 = mysqli_query($link,$sql); 
             mysqli_close($link);
-           header("Location: ../../you_won.php");
+            header("Location: ../../you_won.php");
         }else{
             header("Location: ".$_SERVER['HTTP_REFERER']);
         }
