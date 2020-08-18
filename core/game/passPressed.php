@@ -6,6 +6,12 @@ $link = mysqli_connect($serverIp, $username, $pass, $dbName);
     $row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
     mysqli_close($link);
 
+//set unoPressed flag to no
+$link = mysqli_connect($serverIp, $username, $pass, $dbName);
+$sql = "update player set unoPressed=0 where id='".$_GET["player-id"]."'"; 
+$res1 = mysqli_query($link,$sql); 
+mysqli_close($link);
+
  $link = mysqli_connect($serverIp, $username, $pass, $dbName);
  $sql = "select * from player where id='".$_POST["player-id"]."'";
  $res = mysqli_query($link,$sql); 

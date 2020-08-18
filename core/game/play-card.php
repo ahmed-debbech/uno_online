@@ -73,7 +73,7 @@ if($ch->isCompatible()){
         }
         if($list[0] == 1){
             $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-            $sql = "select unoPressed from player where id='".$_GET["player-id"]."";
+            $sql = "select * from player where id='".$_GET["player-id"]."'";
             $res = mysqli_query($link,$sql); 
             $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
             mysqli_close($link);
