@@ -9,5 +9,5 @@
     $shuf->setCardOnTable($_GET["room-code"]);
     $shuf->setPlayDirection($_GET["room-code"]);
     $shuf->pickTheFirstTurn($_GET["room-code"]);
-    header("Location: ../../game-play.php?player-name=".$_GET["player-name"]."&player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
+    header("Location: ../../game-play.php?player-id=".$_GET["player-id"]."&room-code=".$_GET["room-code"]);
 ?>

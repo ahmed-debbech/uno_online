@@ -111,8 +111,6 @@ if($row1["stackUsed"] == 0){
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
     }
-}else{
-    echo "used";
 }
 header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

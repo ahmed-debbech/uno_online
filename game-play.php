@@ -154,7 +154,7 @@ include_once("keys.php");
             <table>
                 <tr>
                     <td>
-                    <form method="post" action="core/game/get_from_Stack.php" onsubmit='return is_turn();'>
+                    <form method="post" action="core/game/get_from_stack.php" onsubmit='return is_turn();'>
                         <input name="roomCode" type="hidden" value="<?php echo $_GET["room-code"]; ?>">
                         <input name="player-id" type="hidden" value="<?php echo $_SESSION["player_id"]; ?>">
                         <input type="submit" value="Stack">
@@ -221,9 +221,9 @@ include_once("keys.php");
                 <div class="modal-body">
                     <form action="core/game/play-card.php" method="get" >
                         <input name="color" id="pickedColor" type="hidden" value="">
-                        <input type='hidden' name='room-code' value="<?echo $_GET["room-code"]?>">
+                        <input type='hidden' name='room-code' value="<?php echo $_GET["room-code"];?>">
                         <input type='hidden' id="con" name='card-content' value="">
-                        <input type='hidden' name='player-id' value="<?echo $_GET["player-id"]?>">
+                        <input type='hidden' name='player-id' value="<?php echo $_GET["player-id"];?>">
                         <button type="submit"  onclick="document.getElementById('pickedColor').value = 'r';" style="background-color: #ff4747; padding: 50px;"></button>
                         <button type="submit" onclick="document.getElementById('pickedColor').value = 'g';" style="background-color: #6fc763; padding: 50px;"></button>
                         <button type="submit" onclick="document.getElementById('pickedColor').value = 'b';" style="background-color: #5496ff; padding: 50px;"></button>
