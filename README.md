@@ -1,11 +1,17 @@
 # Uno Online!
-Is a minimal free Uno game online.
+Is a classic UNO online with a low graphic fidelity using only native web technologies ONLY.
 
 ### How to use:
-There's no content hosted at the moment nor available domain.
-So clone the repo in your local and then access the "view" folder and double click the "index.html" file you will be redirected to the official menu game. enjoy!
+The content is hosted on: https://unoonline1.000webhostapp.com/ \
+Open the website and create room and share the code with your friends to join you and start the match. \
+**For Developers:** \
+Clone the repo in your local and double click the "index.html" file you will be redirected to the official menu game. enjoy! \
+Structure of the project: 
+* core (folder) : contains all the necessary core modules and functions.
+* entities (folder) : contains all the necessary classes and their implementations.
+* rest of files are the view and UI part of the game
 ### TODO:
-* I defently try to host the website to make the game playable online.
-
-## this is a very experimental work to learn Web technologies.
-## (Under development)
+* I am trying to improve the UI of the game using native html/css with a friend.
+* As well as i'm fixing a huge number of bugs that show everytime i test. 
+## This is a very experimental work to learn the native web technologies.
+## This is not considered stable as this project is in its early development.
