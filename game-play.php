@@ -24,9 +24,8 @@ include_once("keys.php");
     <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/game-play.js"></script>
-
+    <script type="text/javascript" src="assets/js/ajax_gameplay.js"></script>
         <center>
-        <p id="feel">this is a div<p>
             <table id="players">
                 <tr>
                     <td>
@@ -107,11 +106,6 @@ include_once("keys.php");
                 <tr>
                     <td>
                     <?php
-                        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-                        $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
-                        $res = mysqli_query($link,$sql); 
-                        $list = mysqli_fetch_array($res, MYSQLI_ASSOC);
-                        mysqli_close($link);
                         function setColors($text){
                             $colo = $text[strlen($text)-1];
                             switch($colo){
@@ -122,18 +116,8 @@ include_once("keys.php");
                                 default: return "grey"; break;
                             }
                         }
-                        function __setColors($text){
-                            switch($text){
-                                case 'r': return "#ff4747"; break;
-                                case 'g': return "#6fc763"; break;
-                                case 'b': return "#5496ff"; break;
-                                case 'y': return "#eddc1c"; break;
-                                default: return "grey"; break;
-                            }
-                        }
-                        echo "<p style='background-color: ".__setColors($list["color"])."; color: white;' id='cardOnTable'>".$list["cardOnTable"]."</p>";
                     ?>
-                    <p id="cardOnTable" style=" color: white;" id='cardOnTable'></p>
+                    <p id="cardOnTable" style="color: black;" id='cardOnTable'></p>
                     </td>
                 </tr>
             </table>

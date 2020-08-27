@@ -13,5 +13,7 @@ Structure of the project:
 ### TODO:
 * I am trying to improve the UI of the game using native html/css with a friend.
 * As well as i'm fixing a huge number of bugs that show everytime i test. 
+### DONE:
+* i finally could implement dynamic parts in the game play using AJAX & JQuery.
 ## This is a very experimental work to learn the native web technologies.
 ## This is not considered stable as this project is in its early development.
