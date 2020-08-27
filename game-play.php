@@ -20,14 +20,13 @@ include_once("keys.php");
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="assets/css/game-play-theme.css">
-        <script type="text/javascript" src="assets/js/game-play.js"></script>
-        <script>
-        setTimeout(function(){window.location.reload(1);}, 2000);
-        </script>
     </head>
     <body>
-       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/game-play.js"></script>
+
         <center>
+        <p id="feel">this is a div<p>
             <table id="players">
                 <tr>
                     <td>
@@ -134,6 +133,7 @@ include_once("keys.php");
                         }
                         echo "<p style='background-color: ".__setColors($list["color"])."; color: white;' id='cardOnTable'>".$list["cardOnTable"]."</p>";
                     ?>
+                    <p id="cardOnTable" style=" color: white;" id='cardOnTable'></p>
                     </td>
                 </tr>
             </table>
@@ -155,7 +155,7 @@ include_once("keys.php");
                 <tr>
                     <td>
                     <form method="post" action="core/game/get_from_stack.php" onsubmit='return is_turn();'>
-                        <input name="roomCode" type="hidden" value="<?php echo $_GET["room-code"]; ?>">
+                        <input id="rc" name="roomCode" type="hidden" value="<?php echo $_GET["room-code"]; ?>">
                         <input name="player-id" type="hidden" value="<?php echo $_SESSION["player_id"]; ?>">
                         <input type="submit" value="Stack">
                     </form>
@@ -251,9 +251,6 @@ include_once("keys.php");
         modal.style.display = "none";
         }
 
-        validate.onclick = function() {
-        modal.style.display = "none";
-        }
         </script>
     <footer>Version: v0.1</footer>
     </body>
