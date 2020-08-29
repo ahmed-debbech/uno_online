@@ -30,10 +30,24 @@ function updateStatus(){
     xmlhttp.send();
 }
 
+//updater for players
+function updatePlayers(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        if($("#pt tr").length == 0){
+            $("#pt").append(this.responseText);
+        }
+    }
+    };
+    xmlhttp.open("GET", "core/game/ajax/update_players.php?room-code="+document.getElementById("rc").value, true);
+    xmlhttp.send();
+}
 //caller for updaters
 $(document).ready(function(){
     setInterval(() => {
         updateTable();
         updateStatus();
+        updatePlayers();
     }, 500);
 })
