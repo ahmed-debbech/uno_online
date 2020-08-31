@@ -163,6 +163,6 @@ include_once("keys.php");
         }
 
         </script>
-    <footer>Version: v0.1</footer>
+    <footer>Version: v0.2.0</footer>
     </body>
 </html>
