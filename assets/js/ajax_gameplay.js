@@ -44,11 +44,25 @@ function updatePlayers(){
     xmlhttp.open("GET", "core/game/ajax/update_players.php?room-code="+document.getElementById("rc").value, true);
     xmlhttp.send();
 }
+
+//updater for cards
+function updateCards(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            $("#cards").empty();
+            $("#cards").append(this.responseText);
+        }
+    };
+    xmlhttp.open("GET", "core/game/ajax/update_cards.php?room-code="+document.getElementById("rc").value+"&player-id="+document.getElementById("pl_id").value, true);
+    xmlhttp.send();
+}
 //caller for updaters
 $(document).ready(function(){
     setInterval(() => {
         updateTable();
         updateStatus();
         updatePlayers();
+        updateCards();
     }, 500);
 })

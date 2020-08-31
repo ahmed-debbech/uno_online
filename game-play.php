@@ -41,18 +41,6 @@ include_once("keys.php");
             <table id="floor" border="3px">
                 <tr>
                     <td>
-                    <?php
-                        function setColors($text){
-                            $colo = $text[strlen($text)-1];
-                            switch($colo){
-                                case 'r': return "#ff4747"; break;
-                                case 'g': return "#6fc763"; break;
-                                case 'b': return "#5496ff"; break;
-                                case 'y': return "#eddc1c"; break;
-                                default: return "grey"; break;
-                            }
-                        }
-                    ?>
                     <p id="cardOnTable" style="color: black;" id='cardOnTable'></p>
                     </td>
                 </tr>
@@ -67,7 +55,7 @@ include_once("keys.php");
                     <td>
                     <form method="post" action="core/game/get_from_stack.php" onsubmit='return is_turn();'>
                         <input id="rc" name="roomCode" type="hidden" value="<?php echo $_GET["room-code"]; ?>">
-                        <input name="player-id" type="hidden" value="<?php echo $_SESSION["player_id"]; ?>">
+                        <input id="pl_id" name="player-id" type="hidden" value="<?php echo $_SESSION["player_id"]; ?>">
                         <input type="submit" value="Stack">
                     </form>
                     <?php
@@ -85,27 +73,10 @@ include_once("keys.php");
                     }
                     ?>
                     </td>
-                    <td><table border="2px">
-                        <tr> 
-                        <?php
-                            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-                            $sql = "select * from card where stack_id='".$_GET["room-code"]."' and id='".$_GET["player-id"]."'";
-                            $res = mysqli_query($link,$sql); 
-                            $list = mysqli_fetch_all($res, MYSQLI_ASSOC);
-                            mysqli_close($link);
-                            foreach($list as $row){
-                                echo "<td>";
-                                echo "<form action='core/game/play-card.php' method='get' onsubmit='return is_turn();'>";
-                                echo "<input type='hidden' name='room-code' value='".$_GET["room-code"]."'>";
-                                echo "<input type='hidden' name='card-content' value='".$row["content"]."'>";
-                                echo "<input type='hidden' name='player-id' value='".$_GET["player-id"]."'>";
-                                echo "<button name='card' style='background-color: ".setColors($row["content"])."; color: white;' type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>";
-                                echo "</form>";
-                                echo "</td>";
-                            }
-                        ?>
-                        </tr>
-                    </table></td>
+                    <td>
+                    <table id="cards" border="2px">
+                    </table>
+                    </td>
                     <td>
                         You
                     </td>
