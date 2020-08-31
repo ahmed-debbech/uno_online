@@ -36,9 +36,8 @@ function updatePlayers(){
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var arr = JSON.parse(this.responseText);
-            if($("#pt tr").length == 0){
-                $("#pt").append(arr[0].players_list);
-            }
+            $("#pt").empty();
+            $("#pt").append(arr[0].players_list);
             $("#turn").val(arr[0].turn);
         }
     };
