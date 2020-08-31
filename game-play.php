@@ -31,18 +31,7 @@ include_once("keys.php");
                     <td>
                         <h4>Room: <?php echo $_GET["room-code"]?></h4>
                     </td>
-                    <td><input id="turn" type="hidden" value="<?php
-                    $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-                    $sql = "select * from room where roomCode='".$_GET["room-code"]."'";
-                    $res = mysqli_query($link,$sql); 
-                    $list = mysqli_fetch_array($res, MYSQLI_ASSOC);
-                    mysqli_close($link);
-                    if($list["playerTurn"] == $_SESSION["player_id"]){
-                        echo "1";
-                    }else{
-                        echo "0";
-                    }
-                    ?>"></td>
+                    <td><input id="turn" type="hidden" value=""></td>
                     <td>
                         <table id="pt" border="3px">
                         </table>
@@ -70,7 +59,7 @@ include_once("keys.php");
             </table>
             <h4>
                <p id="stat" style='color: #ff4747;'>YOUR TURN!</p>
-               <p id="stat-2">Click on a card to play</p>
+               <p  id="stat-2">Click on a card to play</p>
             </h4>
             <input type="hidden" id="content_card" value="">
             <table>

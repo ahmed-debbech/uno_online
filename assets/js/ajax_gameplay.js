@@ -34,11 +34,13 @@ function updateStatus(){
 function updatePlayers(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        if($("#pt tr").length == 0){
-            $("#pt").append(this.responseText);
+        if (this.readyState == 4 && this.status == 200) {
+            var arr = JSON.parse(this.responseText);
+            if($("#pt tr").length == 0){
+                $("#pt").append(arr[0].players_list);
+            }
+            $("#turn").val(arr[0].turn);
         }
-    }
     };
     xmlhttp.open("GET", "core/game/ajax/update_players.php?room-code="+document.getElementById("rc").value, true);
     xmlhttp.send();
