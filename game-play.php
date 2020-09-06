@@ -1,9 +1,9 @@
-<?php 
-//check if the game is ended 
+<?php
+//check if the game is ended
 include_once("keys.php");
 $link = mysqli_connect($serverIp, $username, $pass, $dbName);
 $sql = "select isEnded from room where roomCode='".$_GET["room-code"]."'";
-$res = mysqli_query($link,$sql); 
+$res = mysqli_query($link,$sql);
 $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 if($row["isEnded"] == 1){
     header("Location: you_lost.php?room-code=".$_GET["room-code"]);
@@ -61,7 +61,7 @@ include_once("keys.php");
                     <?php
                     $link = mysqli_connect($serverIp, $username, $pass, $dbName);
                     $sql = "select stackUsed from player where id='".$_SESSION["player_id"]."'";
-                    $res = mysqli_query($link,$sql); 
+                    $res = mysqli_query($link,$sql);
                     $row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
                     mysqli_close($link);
                     if($row1["stackUsed"] == 1){
