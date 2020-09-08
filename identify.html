@@ -6,22 +6,23 @@
     <link rel="stylesheet" type="text/css" href="identify.css">
 </head>
 <body>
+  <script>
+  window.onload = function() {
+    document.getElementById("song").play();
+}
+  </script>
+  <audio id="song" load="load" play="play" loop="loop">
+<source src="jazz.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
     <button class="sound"> <img src="sound.png" class="sound_icon"></button>
     <button class="close"> <img src="close.png" class="close_icon"></button>
-    <center> 
+    <center>
             <div id="animated_div"><img src="uno_logo.png" class="animated_div"> </div>
-             
+
             <br><br><br>
-            
+
             <button class="button"><span> <b>PLAY</b> </span></button>
-
-
-
-            <iframe style="display: none;" width="560" height="315" src="https://www. youtuberepeater.com/watch?v=QBzHqW4V3lA#gsc.tab=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          
-            
-
-
 
     </center>
     <footer>
@@ -30,4 +31,3 @@
         </footer>
 </body>
 </html>
-
