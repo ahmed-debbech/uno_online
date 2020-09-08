@@ -3,20 +3,30 @@
 <head>
     <title> Uno Online! </title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="identify.css">
+    <link rel="stylesheet" type="text/css" href="welcome.css">
 </head>
 <body>
   <script>
   window.onload = function() {
     document.getElementById("song").play();
 }
+  function manageSound(){
+    var s = document.getElementById('song');
+    var d = document.getElementsByClassName('sound')[0];
+    if(s.paused == false){
+      s.pause();
+      d.style.backgroundColor= '#f9dc99';
+    }else{
+      s.play();
+      d.style.backgroundColor=  '#f9db27';
+    }
+  }
   </script>
   <audio id="song" load="load" play="play" loop="loop">
 <source src="jazz.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
-    <button class="sound"> <img src="sound.png" class="sound_icon"></button>
-    <button class="close"> <img src="close.png" class="close_icon"></button>
+    <button onclick="manageSound();" class="sound"> <img src="sound.png" class="sound_icon"></button>
     <center>
             <div id="animated_div"><img src="uno_logo.png" class="animated_div"> </div>
 

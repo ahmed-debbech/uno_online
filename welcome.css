@@ -77,20 +77,6 @@ h1{
   height: 40px;
 }
 
-.close{
-  background-color: #f9db27;
-  width: 50px;
-  height: 50px;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.close_icon{
-  width: 40px;
-  height: 40px;
-}
 
 h3{
     margin-top: 10%;
