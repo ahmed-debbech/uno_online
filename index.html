@@ -1,27 +1,44 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="assets/css/theme.css">
-    </head>
-    <body>
-        <center>
-            <h1>Welcome To UNO Online :) enjoy! </h1>
-            <form action="core/redirection.php" method="get">
-                <table>
-                    <tr>
-                        <td><input type="hidden" name="action"></td>
-                        <td>
-                            <input onclick="document.getElementsByName('action')[0].value = 'join'; " type="submit" value="Join Room" name="join-button" id="welbut">
-                        </td>
-                        <td>
-                            <input  onclick="document.getElementsByName('action')[0].value = 'create';" type="submit" value ="Create Room" name="create-button" id="welbut">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </center>
-        <footer>
-            <h3>An Ahmed Debbech Production (c) 2020.</h3>
-            <a href="https://github.com/ahmed-debbech/uno_online">Check source code</a>
+<head>
+    <title> Uno Online! </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+  <script>
+  window.onload = function() {
+    document.getElementById("song").play();
+}
+  function manageSound(){
+    var s = document.getElementById('song');
+    var d = document.getElementsByClassName('sound')[0];
+    if(s.paused == false){
+      s.pause();
+      d.style.backgroundColor= '#f9dc99';
+    }else{
+      s.play();
+      d.style.backgroundColor=  '#f9db27';
+    }
+  }
+  </script>
+  <audio id="song" load="load" play="play" loop="loop">
+<source src="jazz.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+    <button onclick="manageSound();" class="sound"> <img src="sound.png" class="sound_icon"></button>
+    <button  class="sound" onclick="location.href='https://github.com/ahmed-debbech/uno_online';"> <img src="git.png" class="sound_icon"></button>
+    <center>
+            <div id="animated_div"><img src="uno_logo.png" class="animated_div"> </div>
+
+            <br><br><br>
+
+            <button onclick="location.href='choose.html';" class="button"><span> <b>PLAY</b> </span></button>
+
+    </center>
+    <footer>
+        <h3 style="font-size: 12px;">An Ahmed Debbech Production © 2020.</h3>
+        <h2 style="font-size: 14px;" id="designedby">Designed with love by Ons Kechrid</h2>
         </footer>
-    </body>
+</body>
 </html>
