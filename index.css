@@ -83,10 +83,6 @@ h3{
     text-align: center;
     color: white;
 }
-#source-code{
-	text-align: center;
-	color: white;
-}
 a{
     margin-top: 20%;
     margin-left: 20%;
@@ -94,5 +90,4 @@ a{
 }
 #designedby{
 	text-align: center;
-	font-size: 18px;
 }
