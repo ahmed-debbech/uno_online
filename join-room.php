@@ -3,12 +3,12 @@
 <head>
 	<title> Uno Online! - Join Room </title>
 	<meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="join-room.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/join-room.css">
     <script src="assets/js/check-fields.js" type="text/javascript"></script>
 </head>
 <body>
   
-  	 <div id="animated_div"><img src="uno_logo.png" class="animated_div"> </div>
+  	 <div id="animated_div"><img src="assets/res/uno_logo.png" class="animated_div"> </div>
    <center>	
     
     <div class="name">
