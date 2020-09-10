@@ -12,7 +12,7 @@
    <center>	
     
     <div class="name">
-      <form action="core/room-creation.php" method="get">
+      <form action="core/room-creation.php" method="get" onsubmit="return checkJoin();">
        <label for="fname"> <h1>Please write room code </h1></label>
        <input type="text" id="roomnum" name="roomnum" placeholder="..."> 
        <br>
