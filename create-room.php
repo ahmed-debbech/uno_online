@@ -1,8 +1,8 @@
 <?php 
-include("entities/player.php");
-include("entities/room.php");
-session_start(); 
-include_once("keys.php");
+    include("entities/player.php");
+    include("entities/room.php");
+    session_start(); 
+    include_once("keys.php");
 ?>
 <html>
     <head>
