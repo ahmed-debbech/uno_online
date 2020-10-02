@@ -1,15 +1,24 @@
 <html>
     <head>
+        <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/css/theme.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/join-room.css">
     </head>
     <body>
         <center>
             <h1>Welcome To UNO Online :) enjoy! </h1>
-            <form action="core/room-creation.php" method="get">
-                <h3>Please write your name:</h3>
-                <input type="text" name="player-name">
-                <input type="submit" value="Submit" name="sub">
-            </form>
+            <div class="name">
+                <form action="core/room-creation.php" method="get">
+                 <label for="fname"> <h1>Please enter your name</h1></label>
+                 <input type="text" name="player-name" id="roomnum"  placeholder="..."> 
+                 <br>
+                 <input type="submit" value="Pass">
+                </form>
+              </div>
         </center>
+        <footer>
+            <h3 style="font-size: 12px;">An Ahmed Debbech Production © 2020.</h3>
+            <h2 style="text-align: center; font-size: 14px;" id="designedby">Designed with love by Ons Kechrid</h2>
+            </footer>
     </body>
 </html>
