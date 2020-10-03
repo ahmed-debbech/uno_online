@@ -32,18 +32,18 @@ div{
 
 /*********************** +4 ******************/
 div.div_war9a_plus4{
-   border: 25px solid #E5E7E9;
-   border-radius: 30px;
-   height: 600px;
-   width: 28%;
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
    background-color: black;
    margin: auto;
  }
 div.icon_plus4{
    border: 5px solid red;
-   border-radius: 500px;
-   height: 310px;
-   width: 85%;
+   border-radius: 50px;
+   height: 50px;
+   width: 50px;
 
 	animation: mymove 2s infinite;
 } 
@@ -52,24 +52,23 @@ div.icon_plus4{
 }
 
 img.icon_plus4{
-   height: 290px;
-   width: 85%;
+   height: 50px;
+   width: 50px;
 }
 
 /*********************** +2 ******************/
 div.div_war9a_plus2{
-   border: 25px solid #E5E7E9;
-   border-radius: 30px;
-   height: 600px;
-   width: 28%;
-   background-color: #0F0C93;
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
    margin: auto;
  }
 div.icon_plus2{
-   border: 5px solid #211AFC/*1B15D8*/;
-   border-radius: 500px;
-   height: 310px;
-   width: 85%;
+   border: 5px solid;
+   border-radius: 50px;
+   height: 50px;
+   width: 50px;
 
 	animation: mymove 2s infinite;
 } 
@@ -78,48 +77,44 @@ div.icon_plus2{
 }
 
 img.icon_plus2{
-   height: 270px;
-   width: 80%;
-   padding-top: 20px;
-   padding-left: 25px;
+   height: 50px;
+   width: 50px; 
 }
 
 /*********************** 4colors ******************/
 
 div.div_war9et_4_colors{
    background-color: black;
-   border: 25px solid #E5E7E9;
-   border-radius: 30px;
-   height: 600px;
-   width: 28%;
-   margin: auto;
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
 }
- .circle_4_colors{
+.circle_4_colors{
 	
-	width: 100px;
-	height: 100px;
+	width: 10px;
+	height: 10px;
 	 border-radius: 50%;
 	background-color: black;
-	border-top: 90px solid #ed1c24;
-	border-right: 90px solid green;
-	border-bottom: 90px solid yellow;
-	border-left: 90px solid #0F0C93;
+	border-top: 20px solid #ed1c24;
+	border-right: 20px solid green;
+	border-bottom: 20px solid yellow;
+	border-left: 20px solid #0F0C93;
 }
 
 /*********************** war9a aadiyya ******************/
 
 div.div_war9a_aadiyya{
-   background-color: #0F0C93 ;
-   border: 25px solid #E5E7E9;
-   border-radius: 30px;
-   height: 600px;
-   width: 28%;
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
    margin: auto;
 }
  .war9a_aadiyya{
  	color: white;
    	text-align: center;
-   	font-size: 350px;
+   	font-size: 50px;
    	text-shadow: 8px 8px 16px #000000;
     /*position: absolute;  */ 
     padding-top: 500px;
@@ -129,26 +124,24 @@ div.div_war9a_aadiyya{
 
 img.logo{
   width: 25%;
-  height: auto;
-  padding-left: 20px; 
+  padding-left: 10px; 
 }
 
 /*********************** block ******************/
 
 div.div_war9a_block{
-   background-color: #0F0C93 ;
-   border: 25px solid #E5E7E9;
-   border-radius: 30px;
-   height: 600px;
-   width: 28%;
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
    margin: auto;
 }
 
 div.icon_block{
    border: 5px solid #E5E7E9;
-   border-radius: 500px;
-   height: 280px;
-   width: 75%;
+   border-radius: 50px;
+   height: 50px;
+   width: 50px;
 
 	animation: mymove 2s infinite;
 } 
@@ -157,25 +150,24 @@ div.icon_block{
 }
 
 img.icon_block{
-   height: 280px;
-   width: 100%;
+   height: 50px;
+   width: 50px;
 }
 
 /*********************** inverse ******************/
 div.div_war9a_inverse{
-   background-color: #0F0C93 ;
-   border: 25px solid #E5E7E9;
-   border-radius: 30px;
-   height: 600px;
-   width: 28%;
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
    margin: auto;
 }
 
 div.icon_inverse{
    border: 5px solid #E5E7E9;
-   border-radius: 500px;
-   height: 280px;
-   width: 75%;
+   border-radius: 50px;
+   height: 50px;
+   width: 50px;
 
 	animation: mymove 2s infinite;
 } 
@@ -184,8 +176,8 @@ div.icon_inverse{
 }
 
 img.icon_inverse{
-   height: 280px;
-   width: 100%;
+   height: 50px;
+   width: 50px;
 }
 
 /*********************** 9fee el war9a ******************/
