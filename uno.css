@@ -1,0 +1,201 @@
+body{
+	background-color: white;
+}
+
+
+div{
+   /*border: 25px solid gray;*/
+   /*border-radius: 20px;
+   height: 600px;
+   width: 28%;
+   background-color: #0E09AD;
+   margin: auto;*/
+
+    background-color: white;
+  border: 20px solid white;
+  border-radius: 20px;
+   height: 600px;
+   width: 28%;
+   margin: auto;
+ }
+
+
+  /* .oval {
+  height: 600px;
+  width: 65%;
+    background-color:#1D18B0;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px #5F5BD5;
+    display: inline-block;
+    position: relative;
+  }*/
+
+/*********************** +4 ******************/
+div.div_war9a_plus4{
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
+   background-color: black;
+   margin: auto;
+ }
+div.icon_plus4{
+   border: 5px solid red;
+   border-radius: 50px;
+   height: 50px;
+   width: 50px;
+
+	animation: mymove 2s infinite;
+} 
+@keyframes mymove {
+  50% {box-shadow: 4px 8px 10px white;}
+}
+
+img.icon_plus4{
+   height: 50px;
+   width: 50px;
+}
+
+/*********************** +2 ******************/
+div.div_war9a_plus2{
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
+   margin: auto;
+ }
+div.icon_plus2{
+   border: 5px solid;
+   border-radius: 50px;
+   height: 50px;
+   width: 50px;
+
+	animation: mymove 2s infinite;
+} 
+@keyframes mymove {
+  50% {box-shadow: 4px 8px 10px white;}
+}
+
+img.icon_plus2{
+   height: 50px;
+   width: 50px; 
+}
+
+/*********************** 4colors ******************/
+
+div.div_war9et_4_colors{
+   background-color: black;
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
+}
+.circle_4_colors{
+	
+	width: 10px;
+	height: 10px;
+	 border-radius: 50%;
+	background-color: black;
+	border-top: 20px solid #ed1c24;
+	border-right: 20px solid green;
+	border-bottom: 20px solid yellow;
+	border-left: 20px solid #0F0C93;
+}
+
+/*********************** war9a aadiyya ******************/
+
+div.div_war9a_aadiyya{
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
+   margin: auto;
+}
+ .war9a_aadiyya{
+ 	color: white;
+   	text-align: center;
+   	font-size: 50px;
+   	text-shadow: 8px 8px 16px #000000;
+    /*position: absolute;  */ 
+    padding-top: 500px;
+   }
+
+/*********************** logo ******************/
+
+img.logo{
+  width: 25%;
+  padding-left: 10px; 
+}
+
+/*********************** block ******************/
+
+div.div_war9a_block{
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
+   margin: auto;
+}
+
+div.icon_block{
+   border: 5px solid #E5E7E9;
+   border-radius: 50px;
+   height: 50px;
+   width: 50px;
+
+	animation: mymove 2s infinite;
+} 
+@keyframes mymove {
+  50% {box-shadow: 4px 8px 10px white;}
+}
+
+img.icon_block{
+   height: 50px;
+   width: 50px;
+}
+
+/*********************** inverse ******************/
+div.div_war9a_inverse{
+   border: 5px solid #E5E7E9;
+   border-radius: 20px;
+   height: 90px;
+   width: 80px;
+   margin: auto;
+}
+
+div.icon_inverse{
+   border: 5px solid #E5E7E9;
+   border-radius: 50px;
+   height: 50px;
+   width: 50px;
+
+	animation: mymove 2s infinite;
+} 
+@keyframes mymove {
+  50% {box-shadow: 4px 8px 10px white;}
+}
+
+img.icon_inverse{
+   height: 50px;
+   width: 50px;
+}
+
+/*********************** 9fee el war9a ******************/
+
+div.div_derriere{
+   background-color: black ;
+   border: 25px solid #E5E7E9;
+   border-radius: 30px;
+   height: 600px;
+   width: 28%;
+   margin: auto;
+}
+ .derriere{
+  width: 95%;
+  height: auto;
+  padding-left: 10px;
+  padding-top: 160px; 
+}
+   
+
+
