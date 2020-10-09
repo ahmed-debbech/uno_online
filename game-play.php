@@ -74,7 +74,7 @@ include_once("keys.php");
                     ?>
                     </td>
                     <td>
-                    <table id="cards" border="2px">
+                    <table id="cards">
                     </table>
                     </td>
                     <td>

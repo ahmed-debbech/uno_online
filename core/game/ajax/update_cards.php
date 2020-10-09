@@ -12,7 +12,7 @@ function setColors($text){
 }
 function loadCard($content){
     $card = "";
-    if($content[0] >= '0' && $content <= '9'){
+    if($content[0] >= '0' && $content[0] <= '9'){
         $card = '<html> <head> <style> div.div_war9a_aadiyya{
             border: 5px solid #E5E7E9;
             border-radius: 20px;
@@ -36,78 +36,79 @@ function loadCard($content){
            padding-left: 10px; 
          } </style> </head> <body> 
          <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" style="background-color: '.setColors($content).';" class="div_war9a_aadiyya">
-    	    </br>
-    	    <center> 
-    		    <b class="war9a_aadiyya">'.$content[0].'</b> 
-    	    </center>
-    	    <img src="assets/res/logo.png" class="logo">
+            </br>
+            <center> 
+                <b class="war9a_aadiyya">'.$content[0].'</b> 
+            </center>
+            <img src="assets/res/logo.png" class="logo">
         </div> </body> </html>';
     }else{
-        if(strpos($content, "wc") == true){
+        if(stristr($content, "wc") == true){
             $card = '<html> <head> <style>
-        
-            div.div_war9et_4_colors{
-                background-color: black;
-                border: 5px solid #E5E7E9;
-                border-radius: 20px;
-                height: 90px;
-                width: 80px;
-            }
-            .circle_4_colors{
-                
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background-color: black;
-                border-top: 20px solid #ed1c24;
-                border-right: 20px solid green;
-                border-bottom: 20px solid yellow;
-                border-left: 20px solid #0F0C93;
-            }
-            </style> </head> <body> 
-                <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" class="div_war9et_4_colors">
-		            <br>
-    	            <center>  <div class="circle_4_colors"></div> </center>
-    	        <img src="assets/res/logo.png" class="logo"> 
-                </div></body> </html>';
-        }else{
-            if(strpos($content, "+2") == true){
-                $card = '<html> <head> <style>
-                div.div_war9a_plus2{
+                div.div_war9et_4_colors{
+                    background-color: black;
                     border: 5px solid #E5E7E9;
                     border-radius: 20px;
                     height: 90px;
                     width: 80px;
-                    margin: auto;
-                  }
-                 div.icon_plus2{
-                    border: 5px solid;
-                    border-radius: 50px;
-                    height: 50px;
-                    width: 50px;
-                 
-                     animation: mymove 2s infinite;
-                 } 
-                 @keyframes mymove {
-                   50% {box-shadow: 4px 8px 10px white;}
-                 }
-                 
-                 img.icon_plus2{
-                    height: 50px;
-                    width: 50px; 
-                 }
-                 
+                }
+                .circle_4_colors{
+                    
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: black;
+                    border-top: 20px solid #ed1c24;
+                    border-right: 20px solid green;
+                    border-bottom: 20px solid yellow;
+                    border-left: 20px solid #0F0C93;
+                }
                 </style> </head> <body> 
-                <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" style="background-color: '.setColors($content).';"  class="div_war9a_plus2">
-                </br>
-                <div class="icon_plus2">
-                      <b class="war9a_plus2"><img src="assets/res/two_cards.png" class="icon_plus2"></b> 
-                </div>  
-                <img src="assets/res/logo.png" class="logo"> 
-                </div></body> </html>';
+                    <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" class="div_war9et_4_colors">
+                        <br>
+                        <center>  <div class="circle_4_colors"></div> </center>
+                    <img src="assets/res/logo.png" class="logo"> 
+                    </div></body> </html>';
+
+        }else{
+            if(stristr($content, "+2") == true){
+                $card =  '<html> <head> <style>
+                    div.div_war9a_plus2{
+                        border: 5px solid #E5E7E9;
+                        border-radius: 20px;
+                        height: 90px;
+                        width: 80px;
+                        margin: auto;
+                    }
+                    div.icon_plus2{
+                        border: 5px solid;
+                        border-radius: 50px;
+                        height: 50px;
+                        width: 50px;
+                    
+                        animation: mymove 2s infinite;
+                    } 
+                    @keyframes mymove {
+                    50% {box-shadow: 4px 8px 10px white;}
+                    }
+                    
+                    img.icon_plus2{
+                        height: 50px;
+                        width: 50px; 
+                    }
+                    
+                    </style> </head> <body> 
+                    <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" style="background-color: '.setColors($content).';"  class="div_war9a_plus2">
+                    </br>
+                    <div class="icon_plus2">
+                        <b class="war9a_plus2"><img src="assets/res/two_cards.png" class="icon_plus2"></b> 
+                    </div>  
+                    <img src="assets/res/logo.png" class="logo"> 
+                    </div></body> </html>';
+
             }else{
-                if(strpos($content, "+4") == true){
-                    $card = '<html> <head> <style>
+                if(stristr($content, "+4") == true){
+                     $card = '<html> <head> <style>
                     div.div_war9a_plus4{
                         border: 5px solid #E5E7E9;
                         border-radius: 20px;
@@ -143,7 +144,7 @@ function loadCard($content){
                     <img src="assets/res/logo.png" class="logo"> 
                     </div></body> </html>';
                 }else{
-                    if(strpos($content, "inv") == true){
+                    if(stristr($content, "inv") == true){
                         $card = '<html> <head> <style>
                         div.div_war9a_inverse{
                             border: 5px solid #E5E7E9;
@@ -151,24 +152,24 @@ function loadCard($content){
                             height: 90px;
                             width: 80px;
                             margin: auto;
-                         }
-                         
-                         div.icon_inverse{
+                            }
+                            
+                            div.icon_inverse{
                             border: 5px solid #E5E7E9;
                             border-radius: 50px;
                             height: 50px;
                             width: 50px;
-                         
-                             animation: mymove 2s infinite;
-                         } 
-                         @keyframes mymove {
-                           50% {box-shadow: 4px 8px 10px white;}
-                         }
-                         
-                         img.icon_inverse{
+                            
+                                animation: mymove 2s infinite;
+                            } 
+                            @keyframes mymove {
+                            50% {box-shadow: 4px 8px 10px white;}
+                            }
+                            
+                            img.icon_inverse{
                             height: 50px;
                             width: 50px;
-                         }
+                            }
                         </style> </head> <body> 
                         <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" style="background-color: '.setColors($content).';" class="div_war9a_inverse">
                         </br>
@@ -180,33 +181,32 @@ function loadCard($content){
                         <img src="assets/res/logo.png" class="logo">
                         </div></body> </html>';
                     }else{
-                        if(strpos($content, "blo") == true){
+                        if(stristr($content, "blo") == true){
                             $card = '<html> <head> <style>
                             div.div_war9a_block{
                                 border: 5px solid #E5E7E9;
                                 border-radius: 20px;
                                 height: 90px;
-                                width: 80px;
-                                margin: auto;
-                             }
-                             
-                             div.icon_block{
+                                width: 80px; 
+                            }
+                            
+                            div.icon_block{
                                 border: 5px solid #E5E7E9;
                                 border-radius: 50px;
                                 height: 50px;
                                 width: 50px;
-                             
-                                 animation: mymove 2s infinite;
-                             } 
-                             @keyframes mymove {
-                               50% {box-shadow: 4px 8px 10px white;}
-                             }
-                             
-                             img.icon_block{
+                            
+                                animation: mymove 2s infinite;
+                            } 
+                            @keyframes mymove {
+                            50% {box-shadow: 4px 8px 10px white;}
+                            }
+                            
+                            img.icon_block{
                                 height: 50px;
                                 width: 50px;
-                             }
-                             
+                            }
+                            
                             </style> </head> <body> 
                             <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" style="background-color: '.setColors($content).';" class="div_war9a_block">
                             
