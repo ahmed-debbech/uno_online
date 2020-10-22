@@ -10,6 +10,7 @@ include_once("keys.php");
         <script src="assets/js/refresher.js" type="text/javascript"></script>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="assets/css/queue-page.css">
+        <meta http-equiv="refresh" content="1; URL=core/check-started.php<?php echo '?room-code='.$_GET['room-code']."&player-id=".$_GET['player-id'];?>">
     </head>
     <center>
     <div id="animated_div"><img src="assets/res/uno_logo.png" class="animated_div"> </div>
