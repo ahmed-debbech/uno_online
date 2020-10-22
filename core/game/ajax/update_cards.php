@@ -32,165 +32,19 @@ function loadCard($content){
         </div> ';
     }else{
         if(stristr($content, "wc") == true){
-            $style1 = "background-color: black;
-            border: 5px solid #E5E7E9;
-            border-radius: 20px;
-            height: 90px;
-            width: 80px;";
-
-            $style2= " width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: black;
-            border-top: 20px solid #ed1c24;
-            border-right: 20px solid green;
-            border-bottom: 20px solid yellow;
-            border-left: 20px solid #0F0C93;";
-
-            $card = '<div onclick="setCont('.$content.'); this.formcard[0].submit();" style="'.$style1.'" name="card" class="div_war9et_4_colors">
-                        <br>
-                        <center>  <div style"'.$style2.'" class="circle_4_colors"></div> </center>
-                    <img src="assets/res/logo.png" class="logo"> 
-                    </div>';
-
+            $card = ;
         }else{
             if(stristr($content, "+2") == true){
-                $style1 = "border: 5px solid #E5E7E9;
-                border-radius: 20px;
-                height: 90px;
-                width: 80px;
-                margin: auto;";
-                $style2 = "border: 5px solid;
-                border-radius: 50px;
-                height: 50px;
-                width: 50px;
-                animation: mymove 2s infinite;
-                @keyframes mymove {
-                    50% {box-shadow: 4px 8px 10px white;}
-                    }";
-
-                $card =  '
-                    <div onclick="setCont('.$content.'); this.formcard[0].submit();" name="card" style="'.$style1.' background-color: '.setColors($content).';"  class="div_war9a_plus2">
-                    </br>
-                    <div style="'.$style2.'" class="icon_plus2">
-                        <b class="war9a_plus2"><img src="assets/res/two_cards.png" style="height: 50px;
-                        width: 50px;" class="icon_plus2"></b> 
-                    </div>  
-                    <img src="assets/res/logo.png" class="logo"> 
-                    </div>';
-
+                $card= ;
             }else{
                 if(stristr($content, "+4") == true){
-                     $card = '<html> <head> <style>
-                    div.div_war9a_plus4{
-                        border: 5px solid #E5E7E9;
-                        border-radius: 20px;
-                        height: 90px;
-                        width: 80px;
-                        background-color: black;
-                        margin: auto;
-                      }
-                     div.icon_plus4{
-                        border: 5px solid red;
-                        border-radius: 50px;
-                        height: 50px;
-                        width: 50px;
-                     
-                         animation: mymove 2s infinite;
-                     } 
-                     @keyframes mymove {
-                       50% {box-shadow: 4px 8px 10px white;}
-                     }
-                     
-                     img.icon_plus4{
-                        height: 50px;
-                        width: 50px;
-                     }
-                    </style> </head> <body> 
-                    <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" class="div_war9a_plus4">
-                    </br>
-                    <div class="icon_plus4">
-                    <center> 
-                        <b class="war9a_plus4"><img src="assets/res/four_cards.png" class="icon_plus4"></b> 
-                    </center> 
-                    </div>  
-                    <img src="assets/res/logo.png" class="logo"> 
-                    </div></body> </html>';
+                     $card = ;
                 }else{
                     if(stristr($content, "inv") == true){
-                        $card = '<html> <head> <style>
-                        div.div_war9a_inverse{
-                            border: 5px solid #E5E7E9;
-                            border-radius: 20px;
-                            height: 90px;
-                            width: 80px;
-                            margin: auto;
-                            }
-                            
-                            div.icon_inverse{
-                            border: 5px solid #E5E7E9;
-                            border-radius: 50px;
-                            height: 50px;
-                            width: 50px;
-                            
-                                animation: mymove 2s infinite;
-                            } 
-                            @keyframes mymove {
-                            50% {box-shadow: 4px 8px 10px white;}
-                            }
-                            
-                            img.icon_inverse{
-                            height: 50px;
-                            width: 50px;
-                            }
-                        </style> </head> <body> 
-                        <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" style="background-color: '.setColors($content).';" class="div_war9a_inverse">
-                        </br>
-                        <div class="icon_inverse">
-                        <center> 
-                            <b class="war9a_inverse"><img src="assets/res/inverse.png" align="center" class="icon_inverse"></b> 
-                        </center> 
-                        </div> 
-                        <img src="assets/res/logo.png" class="logo">
-                        </div></body> </html>';
+                        $card = ;
                     }else{
                         if(stristr($content, "blo") == true){
-                            $card = '<html> <head> <style>
-                            div.div_war9a_block{
-                                border: 5px solid #E5E7E9;
-                                border-radius: 20px;
-                                height: 90px;
-                                width: 80px; 
-                            }
-                            
-                            div.icon_block{
-                                border: 5px solid #E5E7E9;
-                                border-radius: 50px;
-                                height: 50px;
-                                width: 50px;
-                            
-                                animation: mymove 2s infinite;
-                            } 
-                            @keyframes mymove {
-                            50% {box-shadow: 4px 8px 10px white;}
-                            }
-                            
-                            img.icon_block{
-                                height: 50px;
-                                width: 50px;
-                            }
-                            
-                            </style> </head> <body> 
-                            <div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" style="background-color: '.setColors($content).';" class="div_war9a_block">
-                            
-                            </br>
-                            <div class="icon_block">
-                            <center> 
-                                <b class="war9a_block"><img src="assets/res/block.png" align="center" class="icon_block"></b> 
-                            </center> 
-                            </div> 
-                            <img src="assets/res/logo.png" class="logo">
-                            </div></body> </html>';
+                            $card = ;
                         }
                     }
                 }
