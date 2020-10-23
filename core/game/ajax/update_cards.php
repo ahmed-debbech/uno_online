@@ -14,7 +14,8 @@ function loadCard($content){
     $card = "";
     if($content[0] >= '0' && $content[0] <= '9'){
         $col = setColors($content);
-        $card = include("../../assets/cards_templates/number_card.php?content=".$content[0]."&color=".$col);
+        include_once("../../../assets/cards_templates/number_card.php");
+        $card = numbercard($content[0], "#".$col);
     }else{
         if(stristr($content, "wc") == true){
             $card = "";

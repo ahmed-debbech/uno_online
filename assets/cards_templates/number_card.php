@@ -1,10 +1,13 @@
-<html>
+<?php
+function numbercard($content, $color){
+return <<<HTML
+    <html>
     <head>
     <style>
         div.div_war9a_aadiyya{
         border: 5px solid #E5E7E9;
         border-radius: 20px;
-        height: 90px;
+        height: 120px;
         width: 80px;
         margin: auto;
         }
@@ -24,12 +27,15 @@
     </style>
     </head>
     <body>
-    <div onclick="setCont('<?php echo $_GET['content']; ?>'); this.parentNode.submit();" name="card" style="background-color: <?php echo "#".$_GET['color']; ?>;" class="div_war9a_aadiyya">
+    <div onclick="setCont('$content'); this.parentNode.submit();" name="card" style="background-color: $color;" class="div_war9a_aadiyya">
             </br>
             <center> 
-                <b class="war9a_aadiyya"><?php echo $_GET['content']; ?></b> 
+                <b class="war9a_aadiyya">$content</b> 
             </center>
-            <img style="width: 25%; padding-left: 10px;" src="../res/logo.png" class="logo">
+            <img src="../../../assets/res/logo.png" class="logo">
         </div> 
     </body>
 </html>
+HTML;
+    }
+?>
