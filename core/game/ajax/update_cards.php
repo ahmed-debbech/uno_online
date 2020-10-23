@@ -3,48 +3,33 @@ include("../../../keys.php");
 function setColors($text){
     $colo = $text[strlen($text)-1];
     switch($colo){
-        case 'r': return "#ff4747"; break;
-        case 'g': return "#6fc763"; break;
-        case 'b': return "#5496ff"; break;
-        case 'y': return "#eddc1c"; break;
+        case 'r': return "ff4747"; break;
+        case 'g': return "6fc763"; break;
+        case 'b': return "5496ff"; break;
+        case 'y': return "eddc1c"; break;
         default: return "grey"; break;
     }
 }
 function loadCard($content){
     $card = "";
     if($content[0] >= '0' && $content[0] <= '9'){
-        $style1 = "border: 5px solid #E5E7E9;
-            border-radius: 20px;
-            height: 90px;
-            width: 80px;
-            margin: auto;";
-        $style2 = "color: white;
-                text-align: center;
-                font-size: 50px;
-                text-shadow: 8px 8px 16px #000000;
-                padding-top: 500px;";
-        $card = '<div onclick="setCont('.$content.'); this.parentNode.submit();" name="card" style="'.$style1.' background-color: '.setColors($content).';" class="div_war9a_aadiyya">
-            </br>
-            <center> 
-                <b style="'.$style2.'" class="war9a_aadiyya">'.$content[0].'</b> 
-            </center>
-            <img style="width: 25%; padding-left: 10px;" src="assets/res/logo.png" class="logo">
-        </div> ';
+        $col = setColors($content);
+        $card = include("../../assets/cards_templates/number_card.php?content=".$content[0]."&color=".$col);
     }else{
         if(stristr($content, "wc") == true){
-            $card = ;
+            $card = "";
         }else{
             if(stristr($content, "+2") == true){
-                $card= ;
+                $card= "";
             }else{
                 if(stristr($content, "+4") == true){
-                     $card = ;
+                     $card = "";
                 }else{
                     if(stristr($content, "inv") == true){
-                        $card = ;
+                        $card = "";
                     }else{
                         if(stristr($content, "blo") == true){
-                            $card = ;
+                            $card = "";
                         }
                     }
                 }
