@@ -15,13 +15,16 @@ function loadCard($content){
     if($content[0] >= '0' && $content[0] <= '9'){
         $col = setColors($content);
         include_once("../../../assets/cards_templates/number_card.php");
-        $card = numbercard($content[0], "#".$col);
+        $card = numbercard($content, "#".$col);
     }else{
         if(stristr($content, "wc") == true){
-            $card = "";
+            include_once("../../../assets/cards_templates/wildcard.php");
+            $card = wildcard();
         }else{
             if(stristr($content, "+2") == true){
-                $card= "";
+                $col = setColors($content);
+                include_once("../../../assets/cards_templates/plustwo.php");
+                $card = plustwo($content, "#".$col);
             }else{
                 if(stristr($content, "+4") == true){
                      $card = "";

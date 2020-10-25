@@ -23,14 +23,13 @@ return <<<HTML
         width: 25%;
         padding-left: 10px; 
         }
-
     </style>
     </head>
     <body>
     <div onclick="setCont('$content'); this.parentNode.submit();" name="card" style="background-color: $color;" class="div_war9a_aadiyya">
             </br>
             <center> 
-                <b class="war9a_aadiyya">$content</b> 
+                <b class="war9a_aadiyya">$content[0]</b> 
             </center>
             <img src="../../../assets/res/logo.png" class="logo">
         </div> 
