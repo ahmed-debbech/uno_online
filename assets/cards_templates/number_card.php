@@ -31,7 +31,7 @@ return <<<HTML
             <center> 
                 <b class="war9a_aadiyya">$content[0]</b> 
             </center>
-            <img src="../../../assets/res/logo.png" class="logo">
+            <img src="assets/res/logo.png" class="logo">
         </div> 
     </body>
 </html>
