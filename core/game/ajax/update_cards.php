@@ -27,13 +27,18 @@ function loadCard($content){
                 $card = plustwo($content, "#".$col);
             }else{
                 if(stristr($content, "+4") == true){
-                     $card = "";
+                    include_once("../../../assets/cards_templates/plusfour.php");
+                    $card = plusfour();
                 }else{
                     if(stristr($content, "inv") == true){
-                        $card = "";
+                        $col = setColors($content);
+                        include_once("../../../assets/cards_templates/inverse.php");
+                        $card = inverse($content, "#".$col);
                     }else{
                         if(stristr($content, "blo") == true){
-                            $card = "";
+                            $col = setColors($content);
+                            include_once("../../../assets/cards_templates/block.php");
+                            $card = block($content, "#".$col);
                         }
                     }
                 }

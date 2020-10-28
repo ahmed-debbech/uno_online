@@ -29,7 +29,7 @@ function wildcard(){
         <div onclick="setCont('wc'); this.formcard[0].submit();"  name="card" class="div_war9et_4_colors">
                             <br>
                             <center>  <div class="circle_4_colors"></div> </center>
-                        <img src="../res/logo.png" class="logo"> 
+                        <img src="assets/res/logo.png" class="logo"> 
                         </div>'
         </body>
     </html>
