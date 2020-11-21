@@ -7,7 +7,7 @@ return <<<HTML
 div.div_war9a_inverse{
 border: 5px solid #E5E7E9;
 border-radius: 20px;
-height: 90px;
+height: 120px;
 width: 80px;
 margin: auto;
 }
@@ -31,7 +31,7 @@ width: 50px;
 </style> 
 </head> 
 <body> 
-<div onclick="setCont('$content'); this.parentNode.submit();" name="card" style="background-color: $col;" class="div_war9a_inverse">
+<div onclick="setCont('$content'); if(is_turn()==true){this.formcard[0].submit();}" name="card" style="background-color: $col;" class="div_war9a_inverse">
 </br>
 <div class="icon_inverse">
 <center> 

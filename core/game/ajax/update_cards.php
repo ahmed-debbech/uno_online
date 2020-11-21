@@ -61,9 +61,8 @@ foreach($list as $row){
     "<input type='hidden' name='room-code' value='".$_GET["room-code"]."'>".
      "<input type='hidden' name='card-content' value='".$row["content"]."'>".
      "<input type='hidden' name='player-id' value='".$_GET["player-id"]."'>".
-     //"<button name='card' style='background-color: ".setColors($row["content"])."; color: white;' type='submit' onclick='setCont(\"".$row["content"]."\")' name='card' >".$row["content"]."</button>".
-     $x.
-     "</form>".
+     $x
+     ."</form>".
      "</td>";
 }
 $r .= "</tr>";

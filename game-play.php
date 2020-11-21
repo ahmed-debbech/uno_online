@@ -74,7 +74,7 @@ include_once("keys.php");
                     ?>
                     </td>
                     <td>
-                    <table id="cards">
+                    <table border="2px" id="cards">
                     </table>
                     </td>
                     <td>
@@ -118,14 +118,7 @@ include_once("keys.php");
         <script>
         // Get the modal
         var modal = document.getElementById("myModal");
-        // Get the button that opens the modal
-        var btn = document.getElementsByName('card');
-        var r;
-        for(var i=0; i<btn.length; i++){
-            if((btn[i].innerHTML == "+4") || (btn[i].innerHTML == "wc")){
-                btn[i].addEventListener("click", function(){modal.style.display = "block";})
-            }
-        }
+
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
         // When the user clicks on <span> (x), close the modal

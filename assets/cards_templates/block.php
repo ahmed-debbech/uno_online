@@ -27,7 +27,7 @@ function block($content, $col){
         </style> 
         </head>
         <body> 
-            <div onclick="setCont('$content'); this.formcard[0].submit();" name="card" style="background-color: $col;" class="div_war9a_block">
+            <div onclick="setCont('$content'); if(is_turn()==true){this.formcard[0].submit();}" name="card" style="background-color: $col;" class="div_war9a_block">
                 </br>
                 <div class="icon_block">
                     <center> 

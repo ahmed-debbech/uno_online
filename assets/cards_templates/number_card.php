@@ -26,7 +26,7 @@ return <<<HTML
     </style>
     </head>
     <body>
-    <div onclick="setCont('$content'); this.parentNode.submit();" name="card" style="background-color: $color;" class="div_war9a_aadiyya">
+    <div onclick="setCont('$content'); if(is_turn()==true){this.parentNode.submit();}" name="card" style="background-color: $color;" class="div_war9a_aadiyya">
             </br>
             <center> 
                 <b class="war9a_aadiyya">$content[0]</b> 
