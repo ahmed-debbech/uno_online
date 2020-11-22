@@ -31,7 +31,7 @@ return <<<HTML
         </style>
       </head>
       <body>
-        <div onclick="var modal = document.getElementById('myModal'); btn[i].addEventListener('click', function(){modal.style.display = 'block';}); setCont('+4'); if(is_turn()==true){this.formcard[0].submit();}" name="card+" class="div_war9a_plus4">
+        <div onclick="var modal = document.getElementById('myModal'); this.addEventListener('click', function(){modal.style.display = 'block';}); setCont('+4'); if(is_turn()==true){this.parentNode.submit();}" name="card+" class="div_war9a_plus4">
           </br>
           <div class="icon_plus4">
             <center> <b class="war9a_plus4"><img src="assets/res/four_cards.png" class="icon_plus4"></b> 

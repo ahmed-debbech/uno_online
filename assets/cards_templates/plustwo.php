@@ -31,7 +31,7 @@ function plustwo($content, $col){
         </style>
         </head>
         <body>
-            <div onclick="setCont('$content'); if(is_turn()==true){this.formcard[0].submit();}" name="card" style="background-color: $col;"  class="div_war9a_plus2">
+            <div onclick="setCont('$content'); if(is_turn()==true){this.parentNode.submit();}" name="card" style="background-color: $col;"  class="div_war9a_plus2">
                 </br>
                 <div class="icon_plus2">
                     <b class="war9a_plus2"><img src="assets/res/two_cards.png" style="height: 50px; width: 50px;" class="icon_plus2"></b> 
