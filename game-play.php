@@ -38,10 +38,10 @@ include_once("keys.php");
                     </td>
                 </tr>
             </table>
-            <table id="floor" border="3px">
+            <table id="floor">
                 <tr>
                     <td>
-                    <p id="cardOnTable" style="color: black;" id='cardOnTable'></p>
+                    <div id='cardOnTable'></div>
                     </td>
                 </tr>
             </table>
@@ -127,6 +127,6 @@ include_once("keys.php");
         }
 
         </script>
-    <footer>Version: v0.3.0</footer>
+    <footer>Version: v0.3.0-alpha1</footer>
     </body>
 </html>
