@@ -34,8 +34,16 @@ function is_correct_card(){
     var numTable= "";
     var numPressed = "";
     var colorPressed = "";
-    var col = document.getElementById("carot").style.backgroundColor;
     var colorTable = getColor(cardTable);
+    if(colorTable == ''){
+        var v = document.getElementById("indicator").innerHTML;
+        switch(v){
+            case "Red": colorTable = 'r'; break;
+            case "Yellow": colorTable = 'y'; break;
+            case "Green": colorTable = 'g'; break;
+            case "Blue": colorTable = 'b'; break;
+        }
+    }
     var isCardOnTableWithHiphen = is_with_hiphen(cardTable); //with '-'
     var isCardPressedWithHiphen  = is_with_hiphen(cardPressed); //with'-'
     var i=0;
@@ -68,7 +76,7 @@ function is_correct_card(){
             return true;
         }else{
             if(isCardOnTableWithHiphen == false){
-                if(colorPressed == colorTable || colorTable == "grey"){
+                if(colorPressed == colorTable){
                     return true;
                 }
             }

@@ -43,6 +43,19 @@ include_once("keys.php");
                     <td>
                     <p style="visibility: hidden;" id='carot'></p>
                     <p style="pointer-events: none;" id='cardOnTable'></p>
+                    <p id="indicator"><?php
+                        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+                        $sql = "select color from room where roomCode='".$_GET["room-code"]."'";
+                        $res = mysqli_query($link,$sql);
+                        $row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                        mysqli_close($link);
+                        switch($row1['color']){
+                            case 'r': echo "Red"; break;
+                            case 'g': echo "Green"; break;
+                            case 'y': echo "Yellow"; break;
+                            case 'b': echo "Blue"; break;
+                        }
+                        ?></p>
                     </td>
                 </tr>
             </table>
@@ -88,7 +101,15 @@ include_once("keys.php");
                     $result = mysqli_query($con, $sql);
                     $list = mysqli_fetch_array($result,MYSQLI_NUM);
                     if($list[0] == 2){
-                        echo "<td><button id='unoBut' onclick=\"location.href='core/game/uno_pressed.php?player-id=".$_GET["player-id"]."'\">UNO!</button></td>";
+                        $con = mysqli_connect($serverIp, $username, $pass, $dbName);
+                    $sql = "select * from player where roomCode='".$_GET['room-code']."' and id='".$_SESSION['player_id']."'";
+                    $result = mysqli_query($con, $sql);
+                    $roe = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                    if($roe['unoPressed'] == 0){
+                        echo "<td><button id='unoBut' style='background-color: red;' onclick=\"location.href='core/game/uno_pressed.php?player-id=".$_GET["player-id"]."'\">UNO!</button></td>";
+                    }else{
+                        echo "<td><button id='unoBut' style='background-color: green;' onclick=\"location.href='core/game/uno_pressed.php?player-id=".$_GET["player-id"]."'\">UNO!</button></td>";
+                    }
                     }
                     ?>
                 </tr>
@@ -128,6 +149,7 @@ include_once("keys.php");
         }
 
         </script>
+    
     <footer>Version: v0.3.0-alpha1</footer>
     </body>
 </html>
