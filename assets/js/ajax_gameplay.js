@@ -3,8 +3,11 @@ function updateTable(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+        var arr =  JSON.parse(this.responseText)
+        $("#carot").html(arr[0].cardOnTable);
+
         $("#cardOnTable").empty();
-        $("#cardOnTable").append(this.responseText);
+        $("#cardOnTable").append(arr[0].cardTemp);
     }
     };
     xmlhttp.open("GET", "core/game/ajax/update_table.php?room-code="+document.getElementById("rc").value, true);

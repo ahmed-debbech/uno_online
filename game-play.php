@@ -41,7 +41,8 @@ include_once("keys.php");
             <table id="floor">
                 <tr>
                     <td>
-                    <div id='cardOnTable'></div>
+                    <p style="visibility: hidden;" id='carot'></p>
+                    <p id='cardOnTable'></p>
                     </td>
                 </tr>
             </table>

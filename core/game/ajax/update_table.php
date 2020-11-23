@@ -57,7 +57,10 @@ mysqli_close($link);
 
 $cardOnTable = $list['cardOnTable'];
 $ret = loadCard($cardOnTable);
-
 // encoding array in JSON format
-echo($ret);
+$return_arr = array();
+
+$return_arr[] = array("cardOnTable" => $cardOnTable, "cardTemp" => $ret);
+
+echo json_encode($return_arr);
 ?>

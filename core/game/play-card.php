@@ -106,6 +106,7 @@ if($ch->isCompatible()){
                     $sql = "update stack set numberOfCardsRemaining=".$d.", nextCardNumber=".$g." where stack_id='".$_GET["room-code"]."'"; 
                     mysqli_query($link,$sql); 
                     mysqli_close($link);
+                
                 }
             }
         }

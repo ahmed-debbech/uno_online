@@ -9,23 +9,33 @@ function is_with_hiphen(x){
     }while(x.length > i);
     return false;
 }
-function selectColor(color){
-    switch(color){
-        case "rgb(255, 71, 71)": return 'r'; break;
-        case "rgb(111, 199, 99)": return 'g'; break;
-        case "rgb(84, 150, 255)": return 'b'; break;
-        case "rgb(237, 220, 28)": return 'y'; break;
-        default: return "grey"; break;
+                         
+function getColor(text){
+    var x ='';
+    switch(text[text.length-1]){
+        case 'r': 
+            x='r'
+            break;
+            case 'y': 
+            x='y'
+            break;
+            case 'b': 
+            x='b'
+            break;
+            case 'g': 
+            x='g'
+            break;
     }
+    return x;
 }
 function is_correct_card(){
-    var cardTable = document.getElementById("cardOnTable").textContent;
+    var cardTable = document.getElementById("carot").textContent;
     var cardPressed = document.getElementById("content_card").value;
     var numTable= "";
     var numPressed = "";
     var colorPressed = "";
-    var col = document.getElementById("cardOnTable").style.backgroundColor;
-    var colorTable = selectColor(col);
+    var col = document.getElementById("carot").style.backgroundColor;
+    var colorTable = getColor(cardTable);
     var isCardOnTableWithHiphen = is_with_hiphen(cardTable); //with '-'
     var isCardPressedWithHiphen  = is_with_hiphen(cardPressed); //with'-'
     var i=0;
