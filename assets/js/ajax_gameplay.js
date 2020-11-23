@@ -8,6 +8,8 @@ function updateTable(){
 
         $("#cardOnTable").empty();
         $("#cardOnTable").append(arr[0].cardTemp);
+        $("#indicator").empty();
+        $("#indicator").append(arr[0].colorInd);
     }
     };
     xmlhttp.open("GET", "core/game/ajax/update_table.php?room-code="+document.getElementById("rc").value, true);

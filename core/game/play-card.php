@@ -59,6 +59,17 @@ if($ch->isCompatible()){
         $sql = "update player set stackUsed=0 where id='".$_GET["player-id"]."'"; 
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
+        //increment cards number to affected player
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $sql = "select * from player where id='".$_GET["player-id"]."' and roomCode='".$_GET['room-code']."'"; 
+        $res1 = mysqli_query($link,$sql); 
+        $row1 = mysqli_fetch_array($res1, MYSQLI_ASSOC);
+        mysqli_close($link);
+        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+        $yy = $row1["numCards"]-1;
+        $sql = "update player set numCards='".$yy."' where id=".$row1["id"]." and roomCode='".$_GET["room-code"]."'"; 
+        mysqli_query($link,$sql); 
+        mysqli_close($link);
         //check if player finished all cards
         $con = mysqli_connect($serverIp, $username, $pass, $dbName);
         $sql = "select count(*) as 'cout' from card where id='".$_GET["player-id"]."' and stack_id='".$_GET["room-code"]."'";

@@ -59,8 +59,19 @@ $cardOnTable = $list['cardOnTable'];
 $ret = loadCard($cardOnTable);
 // encoding array in JSON format
 $return_arr = array();
-
-$return_arr[] = array("cardOnTable" => $cardOnTable, "cardTemp" => $ret);
+$link = mysqli_connect($serverIp, $username, $pass, $dbName);
+$sql = "select color from room where roomCode='".$_GET["room-code"]."'";
+$res = mysqli_query($link,$sql);
+$row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
+mysqli_close($link);
+$x="";
+switch($row1['color']){
+    case 'r': $x ="Red"; break;
+    case 'g': $x = "Green"; break;
+    case 'y': $x = "Yellow"; break;
+    case 'b': $x = "Blue"; break;
+}
+$return_arr[] = array("cardOnTable" => $cardOnTable, "cardTemp" => $ret, "colorInd" => $x);
 
 echo json_encode($return_arr);
 ?>

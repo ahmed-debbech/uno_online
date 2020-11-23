@@ -43,19 +43,7 @@ include_once("keys.php");
                     <td>
                     <p style="visibility: hidden;" id='carot'></p>
                     <p style="pointer-events: none;" id='cardOnTable'></p>
-                    <p id="indicator"><?php
-                        $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-                        $sql = "select color from room where roomCode='".$_GET["room-code"]."'";
-                        $res = mysqli_query($link,$sql);
-                        $row1 = mysqli_fetch_array($res, MYSQLI_ASSOC);
-                        mysqli_close($link);
-                        switch($row1['color']){
-                            case 'r': echo "Red"; break;
-                            case 'g': echo "Green"; break;
-                            case 'y': echo "Yellow"; break;
-                            case 'b': echo "Blue"; break;
-                        }
-                        ?></p>
+                    <p id="indicator"></p>
                     </td>
                 </tr>
             </table>
