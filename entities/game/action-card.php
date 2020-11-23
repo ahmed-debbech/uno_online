@@ -47,6 +47,12 @@ class ActionCard extends CardHandler{
             $sql = "update card set id='".$row1["nextPlayer"]."' where order_in_stack=".$g." and stack_id='".$this->roomCode."'"; 
             mysqli_query($link,$sql); 
             mysqli_close($link);
+            //increment cards number to affected player
+            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+            $yy = $row1["numCards"]-2;
+            $sql = "update player set numCards='".$yy."' where id=".$row["id"]." and roomCode='".$this->roomCode."'"; 
+            mysqli_query($link,$sql); 
+            mysqli_close($link);
             //decrement the number of cards in stack
             $link = mysqli_connect($serverIp, $username, $pass, $dbName);
             $d--;
@@ -77,6 +83,12 @@ class ActionCard extends CardHandler{
             //assign a card from stack to affected player
             $link = mysqli_connect($serverIp, $username, $pass, $dbName);
             $sql = "update card set id='".$row1["nextPlayer"]."' where order_in_stack=".$g." and stack_id='".$this->roomCode."'"; 
+            mysqli_query($link,$sql); 
+            mysqli_close($link);
+            //increment cards number to affected player
+            $link = mysqli_connect($serverIp, $username, $pass, $dbName);
+            $yy = $row1["numCards"]-4;
+            $sql = "update player set numCards='".$yy."' where id=".$row["id"]." and roomCode='".$this->roomCode."'"; 
             mysqli_query($link,$sql); 
             mysqli_close($link);
             //decrement the number of cards in stack

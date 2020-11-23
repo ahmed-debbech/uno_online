@@ -77,7 +77,7 @@ class CardHandler{
         //decrement the number of cards in hand
         $link = mysqli_connect($serverIp, $username, $pass, $dbName);
         $num = $row["numCards"]-1;
-        $sql = "update player set numCards=".$num." where roomCode='".$this->roomCode."'"; 
+        $sql = "update player set numCards=".$num." where id='".$this->playerId."' roomCode='".$this->roomCode."'"; 
         $res1 = mysqli_query($link,$sql); 
         mysqli_close($link);
 
