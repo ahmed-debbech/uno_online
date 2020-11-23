@@ -32,7 +32,42 @@ background-color: #D4D1D2;
   animation-name: fadeIn;
   animation-duration: 0.4s
 }
-
+#stackBut{
+    background-color: #fcd21c;
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 3px 2px;
+    cursor: pointer;
+    border-radius: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.5s;
+    border: 4px solid #000;
+    width: 100px;
+}
+#unoBut{
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 3px 2px;
+  cursor: pointer;
+  border-radius: 200px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  transition-duration: 0.5s;
+  border: 4px solid #000;
+  width: 100px;
+}
 /* Modal Content */
 .modal-content {
   position: fixed;

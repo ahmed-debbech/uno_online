@@ -42,7 +42,7 @@ include_once("keys.php");
                 <tr>
                     <td>
                     <p style="visibility: hidden;" id='carot'></p>
-                    <p id='cardOnTable'></p>
+                    <p style="pointer-events: none" id='cardOnTable'></p>
                     </td>
                 </tr>
             </table>
@@ -57,7 +57,7 @@ include_once("keys.php");
                     <form method="post" action="core/game/get_from_stack.php" onsubmit='return is_turn();'>
                         <input id="rc" name="roomCode" type="hidden" value="<?php echo $_GET["room-code"]; ?>">
                         <input id="pl_id" name="player-id" type="hidden" value="<?php echo $_SESSION["player_id"]; ?>">
-                        <input type="submit" value="Stack">
+                        <input type="submit" value="Stack" id="stackBut">
                     </form>
                     <?php
                     $link = mysqli_connect($serverIp, $username, $pass, $dbName);
@@ -69,7 +69,7 @@ include_once("keys.php");
                         echo'<form method="post" action="core/game/passPressed.php">
                         <input name="roomCode" type="hidden" value="'.$_GET["room-code"].'">
                         <input name="player-id" type="hidden" value="'.$_SESSION["player_id"].'">
-                        <input type="submit" value="Pass">
+                        <input type="submit" value="Pass" id="stackBut">
                         </form>';
                     }
                     ?>
@@ -88,7 +88,7 @@ include_once("keys.php");
                     $result = mysqli_query($con, $sql);
                     $list = mysqli_fetch_array($result,MYSQLI_NUM);
                     if($list[0] == 2){
-                        echo "<td><button onclick=\"location.href='core/game/uno_pressed.php?player-id=".$_GET["player-id"]."'\">UNO!</button></td>";
+                        echo "<td><button id='unoBut' onclick=\"location.href='core/game/uno_pressed.php?player-id=".$_GET["player-id"]."'\">UNO!</button></td>";
                     }
                     ?>
                 </tr>
