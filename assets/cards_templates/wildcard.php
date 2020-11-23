@@ -30,7 +30,7 @@ function wildcard(){
                             <br>
                             <center>  <div class="circle_4_colors"></div> </center>
                         <img src="assets/res/logo.png" class="logo"> 
-                        </div>'
+                        </div>
         </body>
     </html>
     HTML;

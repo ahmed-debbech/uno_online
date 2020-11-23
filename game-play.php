@@ -33,7 +33,7 @@ include_once("keys.php");
                     </td>
                     <td><input id="turn" type="hidden" value=""></td>
                     <td>
-                        <table id="pt" border="3px">
+                        <table id="pt" style="border-color: green;" border="3px">
                         </table>
                     </td>
                 </tr>
@@ -42,7 +42,7 @@ include_once("keys.php");
                 <tr>
                     <td>
                     <p style="visibility: hidden;" id='carot'></p>
-                    <p style="pointer-events: none" id='cardOnTable'></p>
+                    <p style="pointer-events: none;" id='cardOnTable'></p>
                     </td>
                 </tr>
             </table>
