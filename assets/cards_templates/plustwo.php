@@ -40,6 +40,6 @@ function plustwo($content, $col){
             </div>
         </body>
     </html>
-    HTML;
-}
+HTML;
+    }
 ?>

@@ -1,5 +1,5 @@
 <?php
-function wildcard(){
+    function wildcard(){
     return <<<HTML
     <html>
         <head>
@@ -27,12 +27,14 @@ function wildcard(){
         </head>
         <body>
         <div onclick="var modal = document.getElementById('myModal'); this.addEventListener('click', function(){modal.style.display = 'block';}); setCont('wc'); if(is_turn()==true){this.parentNode.submit();}"  name="card+" class="div_war9et_4_colors">
-                            <br>
-                            <center>  <div class="circle_4_colors"></div> </center>
-                        <img src="assets/res/logo.png" class="logo"> 
-                        </div>
+            <br>
+            <center>
+                <div class="circle_4_colors"></div>
+            </center>
+            <img src="assets/res/logo.png" class="logo"> 
+        </div>
         </body>
     </html>
-    HTML;
+HTML;
     }
 ?>

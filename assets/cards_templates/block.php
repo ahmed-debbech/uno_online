@@ -38,6 +38,6 @@ function block($content, $col){
             </div>
         </body> 
     </html>
-    HTML;
+HTML;
 }
 ?>

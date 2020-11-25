@@ -42,6 +42,6 @@ return <<<HTML
       </body>
 
       </html>
-  HTML;
+HTML;
 }
 ?>
