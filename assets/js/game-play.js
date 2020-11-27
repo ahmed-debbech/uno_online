@@ -42,6 +42,7 @@ function is_correct_card(){
             case "Yellow": colorTable = 'y'; break;
             case "Green": colorTable = 'g'; break;
             case "Blue": colorTable = 'b'; break;
+            default : colorTable ='g'; break;
         }
     }
     var isCardOnTableWithHiphen = is_with_hiphen(cardTable); //with '-'
@@ -78,6 +79,10 @@ function is_correct_card(){
             if(isCardOnTableWithHiphen == false){
                 if(colorPressed == colorTable){
                     return true;
+                }else{
+                    if(colorTable == 'g'){
+                        return true;
+                    }
                 }
             }
         }
