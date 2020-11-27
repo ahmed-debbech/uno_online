@@ -8,12 +8,17 @@
     <head>
         <link rel="stylesheet" type="text/css" href="assets/css/create-room.css">
         <script src="assets/js/check-fields.js" type="text/javascript"></script>
-        <script src="assets/js/refresher.js" type="text/javascript"></script>
         <meta charset="utf-8">
-        <meta http-equiv="refresh" content="5; URL=create-room.php<?php echo '?room-code='.$_GET['room-code']."&player-id=".$_GET['player-id']."&player-name=".$_GET["player-name"];?>">
         <link rel="stylesheet" type="text/css" href="create-room.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/ajax_createroom_page.js"></script>
     </head>
     <body>
+
+    <input type="hidden" value="<?php echo $_GET["player-id"];?>" id="playerI">
+    <input type="hidden" value="<?php echo $_GET["room-code"];?>" id="roomC">
+
     <div id="animated_div"><img src="assets/res/uno_logo.png" class="animated_div"> </div>
         <center>
             
@@ -93,30 +98,9 @@
 
             <br>
            
-            <table>
-              <tr>
-                <th>Player ID</th>
-                <th>Name</th>
-              </tr>
-              <?php
-                  $link = mysqli_connect($serverIp, $username, $pass, $dbName);
-                  if (!$link) {
-                      die('<strong>You were not able to connect to your database because ' . mysqli_error() . '</strong>');
-                  }
-                  $sql = "select * from player where roomCode='".$_GET["room-code"]."'";
-                  $result = mysqli_query($link, $sql);
-                  $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                  foreach($row as $array){
-                      echo "<tr>";
-                      echo "<td style='color: black;'>";
-                      echo $array["id"];
-                      echo "</td>";
-                      echo "<td style='color: black;'>";
-                      echo $array["name"];
-                      echo "</td>";
-                      echo "</tr>";
-                  }
-              ?>
+            <table id="players">
+              
+              
             </table>
 
             </br></br></br></br>
