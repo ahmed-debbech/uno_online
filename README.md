@@ -1,19 +1,32 @@
 # Uno Online!
-Is a classic UNO online with a low graphic fidelity using only native web technologies ONLY.
+This is just a very experimental work to grasp the Native Web technologies (HTML/CSS, JavaScript, PHPv7, AJAX, JQuery). \
 
-### How to use:
-The content is hosted on: https://unoonline1.000webhostapp.com/ \
+I created the universal classic Uno game from scratch as a Web Development Project.
+
+### Where to go:
+The game is hosted on: https://unoonline1.000webhostapp.com/ or http://unoonline.42web.io/ \
 Open the website and create room and share the code with your friends to join you and start the match. \
 **For Developers:** \
-Clone the repo in your local and double click the "index.html" file you will be redirected to the official menu game. enjoy! \
 Structure of the project: 
-* core (folder) : contains all the necessary core modules and functions.
-* entities (folder) : contains all the necessary classes and their implementations.
-* rest of files are the view and UI part of the game
-### TODO:
-* I am trying to improve the UI of the game using native html/css with a friend.
-* As well as i'm fixing a huge number of bugs that show everytime i test. 
-### DONE:
-* i finally could implement dynamic parts in the game play using AJAX & JQuery.
-## This is a very experimental work to learn the native web technologies.
-## This is not considered stable as this project is in its early development.
+/core : contains the core engine of the entire game.
+|_____ /core/game: contains the core engine of the game logic.
+|_______________ /core/game/ajax: contains the scripts that refreshes the page with AJAX
+/entities: contains all model classes of the entire game.
+|_________ /entities/game: all the model classes of entire game.
+/assets: contains all the resouces.
+|_______ /assets/cards_templates: uno cards are made up of pure html and css so these files contain them.
+|________ /assets/css: contains all the stylesheets of the the project
+|________ /assets/js: contains all java script code of the project as well as AJAX ones.
+|_________ /assets/res: all the media are there.
+
+# Contributors:
+* Ons Kéchrid : Designer for almost everything you see.
+
+ -> if you want to be a contributor email me at debbech.ahmed@gmail.com or open a pull request.
+
+**Ps: The project is closed at the moment but for any suggestions of new contributions it will be reopened again!** 
+
+# Original Authors: 
+* Ahmed Debbech -> [twitter](https://twitter.com/AhmedDebb)
+
+
